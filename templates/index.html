@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Md. Mahmudul Hasan | Portfolio</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="background-light"></div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <a href="#home" class="logo">MH.</a>
+
+       <nav class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#contact">Contact</a>
+</nav>
+        <div class="nav-actions">
+
+    <button
+        class="theme-toggle"
+        id="theme-toggle"
+        aria-label="Toggle light and dark mode">
+        ◐
+    </button>
+
+    <a href="#contact" class="nav-button">
+        Let's Talk
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Open navigation menu">
+        ☰
+    </button>
+
+</div>
+
+    </header>
+    <!-- Mobile Navigation -->
+
+<div class="mobile-menu" id="mobile-menu">
+
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#contact">Contact</a>
+
+</div>
+
+
+    <!-- Hero Section -->
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <p class="hero-label">
+                    ENGLISH UNDERGRADUATE · ASPIRING BUSINESS & DATA ANALYST
+                </p>
+
+                <h1>
+                   Md. Mahmudul<br><span>Hasan.</span>
+                </h1>
+
+               <p class="hero-text">
+    I am an English undergraduate with strong presentation,
+    communication, and interpersonal skills, currently building
+    expertise in business, data analysis, and technology.
+</p>
+                  
+                </p>
+
+              
+                <div class="hero-actions">
+
+    <a href="#projects" class="button button-primary">
+        Explore My Work
+    </a>
+
+    <a href="#contact" class="button button-secondary">
+        Let's Connect
+    </a>
+
+</div>
+
+<div class="hero-links">
+
+    <a href="https://www.linkedin.com/" target="md-mahmudul-hasan-2bd">
+        LinkedIn ↗
+    </a>
+
+    <a href="https://github.com/" target="_hasan2bd">
+        GitHub ↗
+    </a>
+
+    <a href="https://mail.google.com/" target="mahmudul2bd@gmail.com">
+        Email ↗
+    </a>
+
+    <a
+    href="{{ url_for('static', filename='documents/Hasan-CV.pdf') }}"
+    class="cv-link"
+    target="_blank">
+
+    Download CV
+    <span>↓</span>
+
+</a>
+
+</div>
+
+<!-- ================= PHOTO GALLERY ================= -->
+<section id="gallery" class="section photo-gallery-section">
+
+    <div class="gallery-heading">
+        <div>
+            <p class="section-label">07 — PERSONAL</p>
+            <h2>A little more<br><span>about me.</span></h2>
+        </div>
+
+        <p class="gallery-intro">
+            Beyond academics and professional goals, these moments
+            capture some of the person behind the work.
+        </p>
+    </div>
+
+    <div class="photo-grid">
+
+        <!-- Photo 01 — Large Feature -->
+        <article class="photo-card photo-large">
+            <img
+                src="{{ url_for('static', filename='images/gallery/hasan-01.jpg') }}"
+                alt="Md. Mahmudul Hasan"
+            >
+            <div class="photo-overlay">
+                <span>01</span>
+                <p> Futsal Trophy </p>
+            </div>
+        </article>
+
+        <!-- Photo 02 -->
+        <article class="photo-card photo-small">
+            <img
+                src="{{ url_for('static', filename='images/gallery/hasan-02.jpg') }}"
+                alt="Md. Mahmudul Hasan"
+            >
+            <div class="photo-overlay">
+                <span>02</span>
+                <p> Champions</p>
+            </div>
+        </article>
+
+        <!-- Photo 03 -->
+        <article class="photo-card photo-small">
+            <img
+                src="{{ url_for('static', filename='images/gallery/hasan-03.jpg') }}"
+                alt="Md. Mahmudul Hasan"
+            >
+            <div class="photo-overlay">
+                <span>03</span>
+                <p>A moment to remember</p>
+            </div>
+        </article>
+
+        <!-- Photo 04 — Wide -->
+        <article class="photo-card photo-wide">
+            <img
+                src="{{ url_for('static', filename='images/gallery/hasan-04.jpg') }}"
+                alt="Md. Mahmudul Hasan"
+            >
+            <div class="photo-overlay">
+                <span>04</span>
+                <p> Champion vibes & memories</p>
+            </div>
+        </article>
+
+        <!-- Photo 05 -->
+        <article class="photo-card photo-medium">
+            <img
+                src="{{ url_for('static', filename='images/gallery/hasan-05.jpg') }}"
+                alt="Md. Mahmudul Hasan"
+            >
+            <div class="photo-overlay">
+                <span>05</span>
+                <p> After alumni get together program 7 Final feature </p>
+            </div>
+        </article>
+
+        <!-- Photo 06 -->
+        <article class="photo-card photo-medium">
+            <img
+                src="{{ url_for('static', filename='images/gallery/hasan-06.jpg') }}"
+                alt="Md. Mahmudul Hasan"
+            >
+            <div class="photo-overlay">
+                <span>06</span>
+                <p>Another chapter</p>
+            </div>
+        </article>
+
+        <!-- Photo 07 — Final Feature -->
+        <article class="photo-card photo-feature">
+            <img
+                src="{{ url_for('static', filename='images/gallery/hasan-07.jpg') }}"
+                alt="Md. Mahmudul Hasan"
+            >
+            <div class="photo-overlay">
+                <span>07</span>
+                <p> Three idiots </p>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="gallery-footer">
+        <span></span>
+        <p><i>The woods are lovely, dark and deep,<br>   
+But I have promises to keep,<br>   
+And miles to go before I sleep, </i></p>
+        <span></span>
+    </div>
+
+</section>
+
+
+           <!-- Interactive Profile Card -->
+<div class="profile-card">
+
+    <div class="profile-glow"></div>
+
+    <div class="profile-photo">
+
+    <img
+        src="{{ url_for('static', filename='images/profile.jpg') }}"
+        alt="Md. Mahmudul Hasan">
+
+</div>
+
+ <div class="profile-info">
+
+    <div class="availability">
+
+        <span class="availability-dot"></span>
+
+        OPEN TO OPPORTUNITIES
+
+    </div>
+
+    <p>Currently building</p>
+
+    <h3>
+        <span id="role-text">Business Analytics</span>
+    </h3>
+
+    <div class="profile-line"></div>
+
+    <div class="profile-meta">
+
+        <span>BA English</span>
+
+        <span>·</span>
+
+        <span>GUB</span>
+
+    </div>
+
+</div>
+
+        </section>
+
+
+        <!-- Quick Statistics -->
+        <section class="stats">
+
+            <div class="stat">
+                <strong> CGPA   Ask kore lojja diben na </strong>
+                <span>Current CGPA</span>
+            </div>
+
+            <div class="stat">
+                <strong>67.5+</strong>
+                <span>Credits Completed</span>
+            </div>
+
+            <div class="stat">
+                <strong>8–10/10</strong>
+                <span>Presentation Performance</span>
+            </div>
+
+            <div class="stat">
+                <strong>2028</strong>
+                <span>Expected Graduation</span>
+            </div>
+
+        </section>
+
+
+       <!-- About Section -->
+<section id="about" class="section">
+
+    <div class="section-header">
+        <p class="section-label">01 — ABOUT ME</p>
+
+        <h2>
+            Communication<br>
+            <span>meets analytics.</span>
+        </h2>
+    </div>
+
+    <div class="about-grid">
+
+        <div class="about-intro">
+            <p>
+                I am Md. Mahmudul Hasan, an undergraduate student
+                of English Language & Literature at Green University
+                of Bangladesh.
+            </p>
+        </div>
+
+        <div class="about-details">
+
+            <p>
+                My academic background has helped me develop strong
+                communication, presentation, research, and critical
+                thinking abilities. I particularly enjoy presenting
+                ideas clearly and engaging with people.
+            </p>
+
+            <p>
+                Alongside my university studies, I am building practical
+                technical and business skills. My current focus includes
+                Microsoft Excel, data analysis, SQL, Power BI, Python,
+                and AI-enabled business solutions.
+            </p>
+
+            <p>
+                My long-term goal is to combine communication,
+                analytical thinking, and technology to build a career
+                in business and data analytics.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================================
+     EDUCATION
+================================ -->
+
+<section id="education" class="section">
+
+    <p class="section-label">02 — EDUCATION</p>
+
+    <div class="section-heading">
+        <h2>Academic<br><span>journey.</span></h2>
+
+        <p>
+            From foundational Islamic education to my current
+            undergraduate studies in English Language & Literature,
+            my academic journey has developed my communication,
+            analytical, and critical-thinking abilities.
+        </p>
+    </div>
+
+
+    <div class="education-timeline">
+
+        <!-- UNIVERSITY -->
+
+        <article class="education-item current">
+
+            <div class="education-marker">
+                <span></span>
+            </div>
+
+            <div class="education-year">
+                2024 — PRESENT
+            </div>
+
+            <div class="education-card">
+
+                <div class="education-status">
+                    CURRENT
+                </div>
+
+                <h3>
+                    Green University of Bangladesh
+                </h3>
+
+                <h4>
+                    B.A. (Hons.) in English Language & Literature
+                </h4>
+
+                <p>
+                    Currently pursuing undergraduate studies with a
+                    focus on English language, literature, critical
+                    thinking, communication, and academic research.
+                </p>
+
+                <div class="education-details">
+
+                    <span>
+                        <strong>Semester</strong>
+                        7th
+                    </span>
+
+                    <span>
+                        <strong>CGPA</strong>
+                        No
+                    </span>
+
+                    <span>
+                        <strong>Credits</strong>
+                        67.5 / 131
+                    </span>
+
+                    <span>
+                        <strong>Expected</strong>
+                        2028
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- FAZIL -->
+
+        <article class="education-item">
+
+            <div class="education-marker">
+                <span></span>
+            </div>
+
+            <div class="education-year">
+                2021 — 2023
+            </div>
+
+            <div class="education-card">
+
+                <div class="education-status">
+                    COMPLETED
+                </div>
+
+                <h3>
+                    Tamirul Millat Kamil Madrasa
+                </h3>
+
+                <h4>
+                    Fazil Pass
+                </h4>
+
+                <p>
+                    Completed Fazil Pass studies at Tamirul Millat
+                    Kamil Madrasa, Tongi.
+                </p>
+
+                <div class="education-location">
+                    📍 Tongi, Bangladesh
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ALIM -->
+
+        <article class="education-item">
+
+            <div class="education-marker">
+                <span></span>
+            </div>
+
+            <div class="education-year">
+                2020
+            </div>
+
+            <div class="education-card">
+
+                <div class="education-status">
+                    COMPLETED
+                </div>
+
+                <h3>
+                    Tamirul Millat Kamil Madrasa
+                </h3>
+
+                <h4>
+                    Alim — Equivalent to HSC
+                </h4>
+
+                <p>
+                    Completed Alim education, equivalent to the
+                    Higher Secondary Certificate (HSC).
+                </p>
+
+                <div class="education-location">
+                    📍 Tongi, Bangladesh
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- SSC / DAKHIL -->
+
+        <article class="education-item">
+
+            <div class="education-marker">
+                <span></span>
+            </div>
+
+            <div class="education-year">
+                SSC / DAKHIL
+            </div>
+
+            <div class="education-card">
+
+                <div class="education-status">
+                    COMPLETED
+                </div>
+
+                <h3>
+                    Sandian Dakhil Madrasa
+                </h3>
+
+                <h4>
+                    Dakhil — Equivalent to SSC
+                </h4>
+
+                <p>
+                    Completed secondary-level Dakhil education at
+                    Sandian Dakhil Madrasa.
+                </p>
+
+                <div class="education-location">
+                    📍 Rasulpur, Gafargaon, Mymensingh
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+            <p class="section-description">
+                I am an undergraduate student of English Language &
+                Literature at Green University of Bangladesh. My academic
+                journey has strengthened my communication, presentation,
+                research, and critical-thinking abilities.
+            </p>
+
+            <p class="section-description">
+                Alongside my degree, I am developing practical expertise
+                in Excel, data analysis, business, and technology with
+                the goal of building a career in business and data analytics.
+            </p>
+
+        </section>
+
+
+    <!-- ================= SKILLS ================= -->
+<section id="skills" class="section skills-section">
+
+    <div class="section-heading">
+        <div>
+            <p class="section-label">03 — EXPERTISE</p>
+
+            <h2>
+                Skills that<br>
+                <span>move me forward.</span>
+            </h2>
+        </div>
+
+        <p>
+            A combination of communication, analytical thinking,
+            technical foundations, and continuously developing
+            business-oriented skills.
+        </p>
+    </div>
+
+
+    <!-- Skill Categories -->
+    <div class="skills-dashboard">
+
+
+        <!-- ================= COMMUNICATION ================= -->
+        <article class="skill-category">
+
+            <div class="skill-category-top">
+
+                <div class="skill-icon">
+                    01
+                </div>
+
+                <div>
+                    <p class="skill-category-label">
+                        COMMUNICATION
+                    </p>
+
+                    <h3>People & Communication</h3>
+                </div>
+
+            </div>
+
+
+            <div class="skill-list">
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Public Speaking</span>
+                        <span>Strong</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 88%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Presentation</span>
+                        <span>Strong</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 90%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Professional English</span>
+                        <span>Strong</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 85%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Team Collaboration</span>
+                        <span>Strong</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 82%;"></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- ================= TECHNICAL ================= -->
+        <article class="skill-category">
+
+            <div class="skill-category-top">
+
+                <div class="skill-icon">
+                    02
+                </div>
+
+                <div>
+                    <p class="skill-category-label">
+                        TECHNICAL
+                    </p>
+
+                    <h3>Tools & Technology</h3>
+                </div>
+
+            </div>
+
+
+            <div class="skill-list">
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Microsoft Excel</span>
+                        <span>Intermediate</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 65%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Microsoft Word</span>
+                        <span>Intermediate</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 72%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>PowerPoint</span>
+                        <span>Intermediate</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 78%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Data Entry & Management</span>
+                        <span>Intermediate</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 68%;"></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- ================= ANALYTICAL ================= -->
+        <article class="skill-category">
+
+            <div class="skill-category-top">
+
+                <div class="skill-icon">
+                    03
+                </div>
+
+                <div>
+                    <p class="skill-category-label">
+                        ANALYTICAL
+                    </p>
+
+                    <h3>Thinking & Analysis</h3>
+                </div>
+
+            </div>
+
+
+            <div class="skill-list">
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Critical Thinking</span>
+                        <span>Strong</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 84%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Research</span>
+                        <span>Strong</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 82%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Problem Solving</span>
+                        <span>Developing</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 70%;"></span>
+                    </div>
+                </div>
+
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Information Analysis</span>
+                        <span>Developing</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <span style="width: 68%;"></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- ================= CURRENTLY LEARNING ================= -->
+        <article class="skill-category learning-card">
+
+            <div class="skill-category-top">
+
+                <div class="skill-icon learning-icon">
+                    +
+                </div>
+
+                <div>
+                    <p class="skill-category-label">
+                        CURRENTLY LEARNING
+                    </p>
+
+                    <h3>Building My Next Skills</h3>
+                </div>
+
+            </div>
+
+
+            <div class="learning-skills">
+
+                <span>Advanced Excel</span>
+                <span>SQL</span>
+                <span>Power BI</span>
+                <span>Python</span>
+                <span>Data Analysis</span>
+                <span>AI Automation</span>
+
+            </div>
+
+
+            <div class="learning-note">
+
+                <span class="learning-dot"></span>
+
+                <p>
+                    Actively developing these skills through
+                    structured learning and practical projects.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+
+    <!-- Skill Philosophy -->
+    <div class="skills-bottom">
+
+        <div class="skills-bottom-number">
+            03
+        </div>
+
+        <div>
+            <p class="skills-bottom-label">
+                MY APPROACH
+            </p>
+
+            <h3>
+                Learn → Build → Analyze → Communicate
+            </h3>
+        </div>
+
+        <p>
+            I believe technical skills become valuable when they
+            can be applied to real problems and communicated clearly.
+        </p>
+
+    </div>
+
+</section>
+
+
+   <!-- ================= PROJECTS ================= -->
+<section id="projects" class="section projects-section">
+
+    <div class="section-heading projects-heading">
+
+        <div>
+            <p class="section-label">04 — SELECTED WORK</p>
+
+            <h2>
+                Projects that<br>
+                <span>turn learning into proof.</span>
+            </h2>
+        </div>
+
+        <p>
+            A growing collection of practical projects designed to
+            transform my technical learning into useful business
+            and data-driven solutions.
+        </p>
+
+    </div>
+
+
+    <!-- ================= PROJECT GRID ================= -->
+    <div class="projects-grid">
+
+
+        <!-- PROJECT 01 -->
+        <article class="project-card project-featured">
+
+            <div class="project-number">
+                01
+            </div>
+
+            <div class="project-status">
+                <span></span>
+                IN PROGRESS
+            </div>
+
+            <div class="project-icon">
+                ↗
+            </div>
+
+            <div class="project-content">
+
+                <p class="project-type">
+                    DATA ANALYSIS · EXCEL
+                </p>
+
+                <h3>
+                    Sales Performance
+                    <br>
+                    Analysis
+                </h3>
+
+                <p class="project-description">
+                    A practical Excel-based analysis designed to
+                    examine sales performance across products,
+                    regions, sales representatives, revenue,
+                    cost, and profit.
+                </p>
+
+                <div class="project-tools">
+                    <span>Excel</span>
+                    <span>Data Cleaning</span>
+                    <span>PivotTables</span>
+                    <span>Charts</span>
+                </div>
+
+            </div>
+
+            <div class="project-footer">
+
+                <span>
+                    BUILDING NOW
+                </span>
+
+                <button
+                    class="project-view"
+                    data-project="sales-analysis"
+                >
+                    View Case Study
+                    <span>↗</span>
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 02 -->
+        <article class="project-card">
+
+            <div class="project-number">
+                02
+            </div>
+
+            <div class="project-status planned">
+                <span></span>
+                PLANNED
+            </div>
+
+            <div class="project-icon">
+                ◇
+            </div>
+
+            <div class="project-content">
+
+                <p class="project-type">
+                    DATA ANALYSIS · SQL
+                </p>
+
+                <h3>
+                    Customer Data
+                    <br>
+                    Analysis
+                </h3>
+
+                <p class="project-description">
+                    A future SQL project focused on customer
+                    behavior, segmentation, purchasing patterns,
+                    and business insights.
+                </p>
+
+                <div class="project-tools">
+                    <span>SQL</span>
+                    <span>Data Analysis</span>
+                    <span>Business Insights</span>
+                </div>
+
+            </div>
+
+            <div class="project-footer">
+
+                <span>
+                    NEXT STAGE
+                </span>
+
+                <span class="project-arrow">
+                    →
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 03 -->
+        <article class="project-card">
+
+            <div class="project-number">
+                03
+            </div>
+
+            <div class="project-status planned">
+                <span></span>
+                PLANNED
+            </div>
+
+            <div class="project-icon">
+                ◫
+            </div>
+
+            <div class="project-content">
+
+                <p class="project-type">
+                    BUSINESS INTELLIGENCE
+                </p>
+
+                <h3>
+                    Business Performance
+                    <br>
+                    Dashboard
+                </h3>
+
+                <p class="project-description">
+                    An interactive dashboard designed to transform
+                    raw business data into clear visual insights
+                    for decision-making.
+                </p>
+
+                <div class="project-tools">
+                    <span>Power BI</span>
+                    <span>Visualization</span>
+                    <span>KPIs</span>
+                </div>
+
+            </div>
+
+            <div class="project-footer">
+
+                <span>
+                    FUTURE PROJECT
+                </span>
+
+                <span class="project-arrow">
+                    →
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 04 -->
+        <article class="project-card">
+
+            <div class="project-number">
+                04
+            </div>
+
+            <div class="project-status planned">
+                <span></span>
+                PLANNED
+            </div>
+
+            <div class="project-icon">
+                </>
+            </div>
+
+            <div class="project-content">
+
+                <p class="project-type">
+                    PYTHON · DATA
+                </p>
+
+                <h3>
+                    Python Data
+                    <br>
+                    Analysis
+                </h3>
+
+                <p class="project-description">
+                    A future Python project exploring data
+                    manipulation, analysis, visualization,
+                    and automated reporting.
+                </p>
+
+                <div class="project-tools">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>Analysis</span>
+                </div>
+
+            </div>
+
+            <div class="project-footer">
+
+                <span>
+                    FUTURE PROJECT
+                </span>
+
+                <span class="project-arrow">
+                    →
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- Project philosophy -->
+    <div class="projects-bottom">
+
+        <div class="projects-bottom-line"></div>
+
+        <p>
+            <strong>01</strong>
+            Every project starts with a question,
+            not a tool.
+        </p>
+
+        <p>
+            <strong>02</strong>
+            The goal is not simply to analyze data,
+            but to communicate what it means.
+        </p>
+
+        <p>
+            <strong>03</strong>
+            Learn the skill. Build something.
+            Show the result.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- Experience & Leadership -->
+<section id="experience" class="section">
+
+    <p class="section-label">05 — EXPERIENCE</p>
+
+    <h2>
+        Experience &<br>
+        <span>leadership.</span>
+    </h2>
+
+    <div class="experience-list">
+
+        <!-- English Club -->
+        <article class="experience-item">
+
+            <div class="experience-year">
+                2025 — PRESENT
+            </div>
+
+            <div class="experience-main">
+
+                <div class="experience-heading">
+                    <div>
+                        <p class="experience-type">LEADERSHIP</p>
+                        <h3>English Club</h3>
+                    </div>
+
+                    <span class="experience-arrow">↗</span>
+                </div>
+
+                <p>
+                    Active involvement in university English Club activities,
+                    contributing to organizational initiatives, communication,
+                    and student engagement.
+                </p>
+
+                <div class="experience-tags">
+                    <span>Leadership</span>
+                    <span>Communication</span>
+                    <span>Teamwork</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        
+
+    </div>
+
+</section>
+
+<!-- Career Roadmap -->
+<section id="roadmap" class="section roadmap-section">
+
+    <p class="section-label">06 — CAREER ROADMAP</p>
+
+    <h2>
+        From language<br>
+        <span>to analytics.</span>
+    </h2>
+
+    <p class="roadmap-intro">
+        A continuously evolving path combining communication,
+        analytical thinking, business knowledge, and technology.
+    </p>
+
+
+    <div class="roadmap">
+
+        <!-- Step 01 -->
+        <div class="roadmap-step current">
+
+            <div class="roadmap-marker">
+                <span>01</span>
+            </div>
+
+            <div class="roadmap-content">
+
+                <span class="roadmap-status">CURRENT FOUNDATION</span>
+
+                <h3>English & Communication</h3>
+
+                <p>
+                    Building on academic training in English,
+                    communication, presentation, research, and
+                    critical thinking.
+                </p>
+
+                <div class="roadmap-tags">
+                    <span>Communication</span>
+                    <span>Presentation</span>
+                    <span>Critical Thinking</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Step 02 -->
+        <div class="roadmap-step">
+
+            <div class="roadmap-marker">
+                <span>02</span>
+            </div>
+
+            <div class="roadmap-content">
+
+                <span class="roadmap-status">CURRENTLY DEVELOPING</span>
+
+                <h3>Excel & Business Analysis</h3>
+
+                <p>
+                    Developing practical spreadsheet, data-handling,
+                    business analysis, and reporting capabilities.
+                </p>
+
+                <div class="roadmap-tags">
+                    <span>Excel</span>
+                    <span>Data Analysis</span>
+                    <span>Business</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Step 03 -->
+        <div class="roadmap-step">
+
+            <div class="roadmap-marker">
+                <span>03</span>
+            </div>
+
+            <div class="roadmap-content">
+
+                <span class="roadmap-status">NEXT</span>
+
+                <h3>SQL & Data Management</h3>
+
+                <p>
+                    Learning to work with structured data,
+                    databases, queries, and analytical datasets.
+                </p>
+
+                <div class="roadmap-tags">
+                    <span>SQL</span>
+                    <span>Databases</span>
+                    <span>Data</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Step 04 -->
+        <div class="roadmap-step">
+
+            <div class="roadmap-marker">
+                <span>04</span>
+            </div>
+
+            <div class="roadmap-content">
+
+                <span class="roadmap-status">NEXT</span>
+
+                <h3>Power BI & Visualization</h3>
+
+                <p>
+                    Turning raw data into interactive dashboards,
+                    reports, and business insights.
+                </p>
+
+                <div class="roadmap-tags">
+                    <span>Power BI</span>
+                    <span>Visualization</span>
+                    <span>Dashboards</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Step 05 -->
+        <div class="roadmap-step">
+
+            <div class="roadmap-marker">
+                <span>05</span>
+            </div>
+
+            <div class="roadmap-content">
+
+                <span class="roadmap-status">ADVANCING</span>
+
+                <h3>Python & Automation</h3>
+
+                <p>
+                    Using Python for data processing, automation,
+                    analysis, and technology-driven workflows.
+                </p>
+
+                <div class="roadmap-tags">
+                    <span>Python</span>
+                    <span>Automation</span>
+                    <span>AI</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Step 06 -->
+        <div class="roadmap-step destination">
+
+            <div class="roadmap-marker">
+                <span>06</span>
+            </div>
+
+            <div class="roadmap-content">
+
+                <span class="roadmap-status">CAREER DIRECTION</span>
+
+                <h3>Business & Data Analytics</h3>
+
+                <p>
+                    Combining communication, business understanding,
+                    analytical thinking, and technology to solve
+                    practical organizational problems.
+                </p>
+
+                <div class="roadmap-tags">
+                    <span>Business Analysis</span>
+                    <span>Data Analytics</span>
+                    <span>Strategy</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- Contact -->
+        <section id="contact" class="section contact">
+
+          <p class="section-label">07 — CONTACT</p>
+
+            <h2>
+                Let's<br>
+                <span>connect.</span>
+            </h2>
+
+            <p class="section-description">
+                Open to internships, entry-level opportunities,
+                collaborations, and professional connections.
+            </p>
+
+            <a href="mailto:your-email@example.com"
+               class="button button-primary">
+                Get In Touch
+            </a>
+
+        </section>
+        <!-- CONTACT -->
+<section id="contact" class="section contact-section">
+    <div class="contact-wrapper">
+
+        <div class="contact-heading">
+            <p class="section-label">08 — CONTACT</p>
+            <h2>Let’s build<br><span>something useful.</span></h2>
+            <p>
+                I’m open to professional opportunities, collaborations,
+                academic projects, and conversations around business,
+                data, technology, and communication.
+            </p>
+        </div>
+
+        <div class="contact-details">
+
+            <a href="mailto:mahmudul2bd@gmail.com" class="contact-item">
+                <div>
+                    <span class="contact-label">EMAIL</span>
+                    <h3>mahmudul2bd@gmail.com</h3>
+                </div>
+                <span class="contact-arrow">↗</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/md-mahmudul-hasan-2bd/" 
+               target="_blank" 
+               class="contact-item">
+                <div>
+                    <span class="contact-label">LINKEDIN</span>
+                    <h3>Connect with me</h3>
+                </div>
+                <span class="contact-arrow">↗</span>
+            </a>
+
+            <a href="https://github.com/hasan2bd/" 
+               target="_blank" 
+               class="contact-item">
+                <div>
+                    <span class="contact-label">GITHUB</span>
+                    <h3>View my projects</h3>
+                </div>
+                <span class="contact-arrow">↗</span>
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+    </main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-logo">MH.</div>
+
+        <p class="footer-copy">
+            © 2026 Md. Mahmudul Hasan. Built with purpose.
+        </p>
+
+        <a href="#home" class="footer-back">
+            Back to top ↑
+        </a>
+    </div>
+</footer>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
