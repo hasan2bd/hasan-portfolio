@@ -64,197 +64,353 @@
 
 </div>
 
-<!-- Hero Section -->
+<!-- =========================
+     HERO
+========================= -->
+
 <main>
 
     <section id="home" class="hero">
 
-        <div class="hero-content">
+        <div class="hero-inner">
 
-            <p class="hero-label">
-                ENGLISH UNDERGRADUATE · BUSINESS & DATA ANALYTICS
-            </p>
+            <!-- HERO CONTENT -->
+            <div class="hero-content">
 
-            <div class="hero-title-wrap">
-                <p class="hero-intro">Hello, I'm</p>
+                <p class="hero-label">
+                    ENGLISH UNDERGRADUATE
+                    <span>·</span>
+                    BUSINESS & DATA ANALYTICS
+                </p>
 
-                <h1>
+                <p class="hero-intro">
+                    Hello, I'm
+                </p>
+
+                <h1 class="hero-name">
                     Md. Mahmudul
                     <span>Hasan.</span>
                 </h1>
+
+                <p class="hero-lead">
+                    An English undergraduate at Green University of Bangladesh,
+                    building practical skills across business analytics, data,
+                    and technology.
+                </p>
+
+                <p class="hero-description">
+                    I combine communication, research, and analytical thinking
+                    to turn information into useful business insights.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#projects" class="button button-primary">
+                        Explore My Work
+                        <span>↗</span>
+                    </a>
+
+                    <a href="#contact" class="button button-secondary">
+                        Let's Connect
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+                <div class="hero-links">
+
+                    <a
+                        href="https://www.linkedin.com/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        LinkedIn ↗
+                    </a>
+
+                    <a
+                        href="https://github.com/hasan2bd"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        GitHub ↗
+                    </a>
+
+                    <a href="mailto:mahmudul2bd@gmail.com">
+                        Email ↗
+                    </a>
+
+                    <a
+                        href="{{ url_for('static', filename='documents/Hasan-CV.pdf') }}"
+                        class="cv-link"
+                        target="_blank">
+                        Download CV
+                        <span>↓</span>
+                    </a>
+
+                </div>
+
             </div>
 
-            <p class="hero-text">
-                An English undergraduate at Green University of Bangladesh,
-                building practical skills across business analytics, data,
-                and technology.
-            </p>
 
-            <p class="hero-subtext">
-                I combine communication, research, and analytical thinking
-                to turn information into useful business insights.
-            </p>
+            <!-- PROFILE CARD -->
+            <div class="profile-card">
 
-            <div class="hero-actions">
+                <div class="profile-card-top">
+                    <span>PROFILE</span>
+                    <span>01 / 01</span>
+                </div>
 
-                <a href="#projects" class="button button-primary">
-                    Explore My Work
-                    <span>↗</span>
-                </a>
+                <div class="profile-photo">
+                    <img
+                        src="{{ url_for('static', filename='images/profile.jpg') }}"
+                        alt="Md. Mahmudul Hasan">
+                </div>
 
-                <a href="#contact" class="button button-secondary">
-                    Let's Connect
-                    <span>→</span>
-                </a>
+                <div class="profile-info">
 
-            </div>
+                    <div class="availability">
+                        <span class="availability-dot"></span>
+                        OPEN TO OPPORTUNITIES
+                    </div>
 
-            <div class="hero-links">
+                    <p class="profile-kicker">
+                        CURRENTLY BUILDING
+                    </p>
 
-                <a
-                    href="https://www.linkedin.com/"
-                    target="md-mahmudul-hasan-2bd"
-                    rel="noopener noreferrer">
-                    LinkedIn ↗
-                </a>
+                    <h2>
+                        <span id="role-text">Business Analytics</span>
+                    </h2>
 
-                <a
-                    href="https://github.com/"
-                    target="_hasan2bd"
-                    rel="noopener noreferrer">
-                    GitHub ↗
-                </a>
+                    <div class="profile-line"></div>
 
-                <a href="mailto:mahmudul2bd@gmail.com">
-                    Email ↗
-                </a>
+                    <div class="profile-meta">
+                        <span>BA English</span>
+                        <span>·</span>
+                        <span>GUB</span>
+                    </div>
 
-                <a
-                    href="{{ url_for('static', filename='documents/Hasan-CV.pdf') }}"
-                    class="cv-link"
-                    target="_blank">
-                    Download CV
-                    <span>↓</span>
-                </a>
+                </div>
+
+                <div class="profile-card-footer">
+                    <span>Dhaka, Bangladesh</span>
+                    <span>2026</span>
+                </div>
 
             </div>
 
         </div>
 
-<!-- ================= PHOTO GALLERY ================= -->
-<section id="gallery" class="section photo-gallery-section">
+    </section>
 
-    <div class="gallery-heading">
-        <div>
-            <p class="section-label">07 — PERSONAL</p>
-            <h2>A little more<br><span>about me.</span></h2>
+
+    <!-- =========================
+         PERSONAL GALLERY
+    ========================= -->
+
+    <section id="gallery" class="section photo-gallery-section">
+
+        <div class="gallery-container">
+
+            <div class="gallery-heading">
+
+                <div class="gallery-heading-main">
+
+                    <p class="section-label">
+                        07 — PERSONAL
+                    </p>
+
+                    <h2>
+                        A little more<br>
+                        <span>about me.</span>
+                    </h2>
+
+                </div>
+
+                <div class="gallery-heading-side">
+
+                    <p>
+                        Beyond academics and professional goals,
+                        these moments capture some of the person
+                        behind the work.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO GRID -->
+
+            <div class="photo-grid">
+
+                <!-- 01 -->
+                <article class="photo-card photo-card-01">
+
+                    <img
+                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918744/main-sample.jpg"
+                        alt="Md. Mahmudul Hasan — Futsal Trophy"
+                        loading="lazy">
+
+                    <div class="photo-overlay">
+
+                        <span>01</span>
+
+                        <div>
+                            <p>Futsal Trophy</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 02 -->
+                <article class="photo-card photo-card-02">
+
+                    <img
+                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918755/hasan-02.jpg"
+                        alt="Md. Mahmudul Hasan — Champions"
+                        loading="lazy">
+
+                    <div class="photo-overlay">
+
+                        <span>02</span>
+
+                        <div>
+                            <p>Champions</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 03 -->
+                <article class="photo-card photo-card-03">
+
+                    <img
+                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918767/hasan-03.jpg"
+                        alt="Md. Mahmudul Hasan — A moment to remember"
+                        loading="lazy">
+
+                    <div class="photo-overlay">
+
+                        <span>03</span>
+
+                        <div>
+                            <p>A moment to remember</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 04 -->
+                <article class="photo-card photo-card-04">
+
+                    <img
+                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918777/hasan-04.jpg"
+                        alt="Md. Mahmudul Hasan — Champion vibes and memories"
+                        loading="lazy">
+
+                    <div class="photo-overlay">
+
+                        <span>04</span>
+
+                        <div>
+                            <p>Champion vibes & memories</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 05 -->
+                <article class="photo-card photo-card-05">
+
+                    <img
+                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918795/hasan-05.jpg"
+                        alt="Md. Mahmudul Hasan — Alumni gathering"
+                        loading="lazy">
+
+                    <div class="photo-overlay">
+
+                        <span>05</span>
+
+                        <div>
+                            <p>Alumni gathering</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 06 -->
+                <article class="photo-card photo-card-06">
+
+                    <img
+                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918809/hasan-06.jpg"
+                        alt="Md. Mahmudul Hasan — Another chapter"
+                        loading="lazy">
+
+                    <div class="photo-overlay">
+
+                        <span>06</span>
+
+                        <div>
+                            <p>Another chapter</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 07 -->
+                <article class="photo-card photo-card-07">
+
+                    <img
+                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918816/hasan-07.jpg"
+                        alt="Md. Mahmudul Hasan — Three idiots"
+                        loading="lazy">
+
+                    <div class="photo-overlay">
+
+                        <span>07</span>
+
+                        <div>
+                            <p>Three idiots</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- FROST QUOTATION -->
+
+            <div class="gallery-footer">
+
+                <span class="gallery-footer-line"></span>
+
+                <blockquote>
+                    <i>
+                        “The woods are lovely, dark and deep,<br>
+                        But I have promises to keep,<br>
+                        And miles to go before I sleep.”
+                    </i>
+                </blockquote>
+
+                <span class="gallery-footer-line"></span>
+
+            </div>
+
         </div>
 
-        <p class="gallery-intro">
-            Beyond academics and professional goals, these moments
-            capture some of the person behind the work.
-        </p>
-    </div>
-
-    <div class="photo-grid">
-
-        <!-- Photo 01 — Large Feature -->
-        <article class="photo-card photo-large">
-            <img src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918744/main-sample.jpg"
-     alt="Md. Mahmudul Hasan — 01">
-            >
-            <div class="photo-overlay">
-                <span>01</span>
-                <p> Futsal Trophy </p>
-            </div>
-        </article>
-
-        <!-- Photo 02 -->
-        <article class="photo-card photo-small">
-           <img
-    src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918755/hasan-02.jpg"
-    alt="Md. Mahmudul Hasan — 02"
-
-    >
-            <div class="photo-overlay">
-                <span>02</span>
-                <p> Champions</p>
-            </div>
-        </article>
-
-        <!-- Photo 03 -->
-        <article class="photo-card photo-small">
-       <img
-    src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918767/hasan-03.jpg"
-    alt="Md. Mahmudul Hasan — 03"
->
-            <div class="photo-overlay">
-                <span>03</span>
-                <p>A moment to remember</p>
-            </div>
-        </article>
-
-        <!-- Photo 04 — Wide -->
-        <article class="photo-card photo-wide">
-           <img
-    src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918777/hasan-04.jpg"
-    alt="Md. Mahmudul Hasan — 04"
-
-            >
-            <div class="photo-overlay">
-                <span>04</span>
-                <p> Champion vibes & memories</p>
-            </div>
-        </article>
-
-        <!-- Photo 05 -->
-        <article class="photo-card photo-medium">
-       <img
-    src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918795/hasan-05.jpg"
-    alt="Md. Mahmudul Hasan — 05"
->
-
-            <div class="photo-overlay">
-                <span>05</span>
-                <p> After alumni get together program 7 Final feature </p>
-            </div>
-        </article>
-
-        <!-- Photo 06 -->
-        <article class="photo-card photo-medium">
-            <img
-    src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918809/hasan-06.jpg"
-    alt="Md. Mahmudul Hasan — 06"
->
-            <div class="photo-overlay">
-                <span>06</span>
-                <p>Another chapter</p>
-            </div>
-        </article>
-
-        <!-- Photo 07 — Final Feature -->
-        <article class="photo-card photo-feature">
-           <img
-    src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918816/hasan-07.jpg"
-    alt="Md. Mahmudul Hasan — 07"
->
-            <div class="photo-overlay">
-                <span>07</span>
-                <p> Three idiots </p>
-            </div>
-        </article>
-
-    </div>
-
-    <div class="gallery-footer">
-        <span></span>
-        <p><i>The woods are lovely, dark and deep,<br>   
-But I have promises to keep,<br>   
-And miles to go before I sleep, </i></p>
-        <span></span>
-    </div>
-
-</section>
+    </section>
 
 
            <!-- Interactive Profile Card -->
