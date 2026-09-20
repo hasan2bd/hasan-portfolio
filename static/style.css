@@ -6274,3 +6274,79 @@ a {
         background-position: 0% center;
     }
 }
+
+/* =========================================
+   HERO NAME — VISIBLE CRIMSON GRADIENT
+   ========================================= */
+
+.hero-name {
+    color: #d71920 !important;
+    -webkit-text-fill-color: #d71920 !important;
+    background: none !important;
+    animation: none !important;
+}
+
+.hero-name span {
+    color: #d71920 !important;
+    -webkit-text-fill-color: #d71920 !important;
+    background: none !important;
+}
+
+/* Subtle animated shine across the name */
+.hero-name {
+    background: linear-gradient(
+        90deg,
+        #9f0710 0%,
+        #d71920 25%,
+        #ff4b52 50%,
+        #d71920 75%,
+        #9f0710 100%
+    ) !important;
+
+    background-size: 250% 100% !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+
+    animation: heroNameShine 5s ease-in-out infinite !important;
+}
+
+.hero-name span {
+    background: inherit !important;
+    background-size: inherit !important;
+    background-position: inherit !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+@keyframes heroNameShine {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+}
+/* =========================================
+   HERO NAME — FIX VISIBILITY
+   ========================================= */
+
+.hero-name,
+.hero-name span {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+
+    color: #d71920 !important;
+    -webkit-text-fill-color: #d71920 !important;
+
+    text-shadow: none !important;
+    animation: none !important;
+}
