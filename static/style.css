@@ -141,14 +141,17 @@ body::after {
     color: #0b0d10;
 }
 
-
 /* =========================
    HERO
 ========================= */
 
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
 .hero::before {
     content: "";
-
     position: absolute;
 
     width: 650px;
@@ -159,23 +162,20 @@ body::after {
 
     border-radius: 50%;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(255, 43, 43, 0.22) 0%,
-            rgba(255, 43, 43, 0.08) 35%,
-            transparent 70%
-        );
-
-    filter: blur(30px);
+    background: radial-gradient(
+        circle,
+        rgba(255, 43, 43, 0.22) 0%,
+        rgba(255, 43, 43, 0.08) 35%,
+        transparent 70%
+    );
 
     animation: heroGlow 8s ease-in-out infinite alternate;
 
     pointer-events: none;
+    z-index: 0;
 }
 
 @keyframes heroGlow {
-
     from {
         transform: translate(0, 0) scale(1);
     }
@@ -183,8 +183,8 @@ body::after {
     to {
         transform: translate(-60px, 40px) scale(1.15);
     }
-
 }
+
 
 
 /* =========================
@@ -4269,9 +4269,56 @@ a {
     color: var(--red);
 }
 
+/* =========================
+   HERO — COMPLETE
+========================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
 
 /* =========================
-   HERO — REFINED
+   HERO BACKGROUND ACCENT
+========================= */
+
+.hero::before {
+    content: "";
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: -180px;
+    top: 5%;
+
+    border-radius: 50%;
+
+    background: rgba(215, 25, 32, 0.08);
+
+    animation: heroGlow 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes heroGlow {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(-40px, 30px) scale(1.08);
+    }
+}
+
+
+/* =========================
+   HERO CONTENT
 ========================= */
 
 .hero-content {
@@ -4279,23 +4326,38 @@ a {
     z-index: 2;
 }
 
+
+/* =========================
+   HERO LABEL
+========================= */
+
 .hero-label {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+
     margin-bottom: 28px;
+
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.12em;
+
     color: var(--red);
 }
 
 .hero-label::before {
     content: "";
+
     width: 34px;
     height: 2px;
+
     background: var(--red);
 }
+
+
+/* =========================
+   HERO TITLE
+========================= */
 
 .hero-title-wrap {
     margin-bottom: 28px;
@@ -4303,46 +4365,93 @@ a {
 
 .hero-intro {
     margin: 0 0 8px;
+
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--muted);
     letter-spacing: 0.04em;
+
+    color: var(--muted);
 }
+
+
+/* =========================
+   NAME
+========================= */
 
 .hero-content h1 {
     margin: 0;
     max-width: 100%;
+
     font-size: clamp(4.5rem, 8vw, 8rem);
     line-height: 0.88;
     letter-spacing: -0.07em;
     font-weight: 800;
+
+    color: var(--text);
+
+    animation: nameEntrance 0.5s ease-out both;
 }
 
 .hero-content h1 span {
     color: var(--red);
 }
 
+
+/* =========================
+   NAME ANIMATION
+========================= */
+
+@keyframes nameEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   HERO DESCRIPTION
+========================= */
+
 .hero-text {
     max-width: 680px;
+
     margin: 0 0 12px;
+
     font-size: clamp(1.15rem, 1.7vw, 1.4rem);
     line-height: 1.55;
     font-weight: 500;
+
     color: var(--text);
 }
 
 .hero-subtext {
     max-width: 620px;
+
     margin: 0 0 34px;
+
     font-size: 1rem;
     line-height: 1.7;
+
     color: var(--muted);
 }
+
+
+/* =========================
+   HERO BUTTONS
+========================= */
 
 .hero-actions {
     display: flex;
     align-items: center;
+
     gap: 12px;
+
     margin-bottom: 28px;
 }
 
@@ -4350,6 +4459,7 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     gap: 10px;
 }
 
@@ -4361,20 +4471,30 @@ a {
     transform: translate(3px, -3px);
 }
 
+
+/* =========================
+   HERO LINKS
+========================= */
+
 .hero-links {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+
     gap: 22px;
 }
 
 .hero-links a {
     position: relative;
+
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.05em;
+
     color: var(--text-soft);
+
     text-decoration: none;
+
     transition: color 0.25s ease;
 }
 
@@ -4388,6 +4508,79 @@ a {
 
 .hero-links .cv-link span {
     margin-left: 4px;
+}
+
+
+/* =========================
+   MOBILE HERO
+========================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: auto;
+        padding: 120px 0 70px;
+    }
+
+    .hero-content {
+        padding-top: 20px;
+    }
+
+    .hero-label {
+        font-size: 0.72rem;
+        line-height: 1.5;
+        margin-bottom: 22px;
+    }
+
+    .hero-label::before {
+        width: 24px;
+    }
+
+    .hero-title-wrap {
+        margin-bottom: 24px;
+    }
+
+    .hero-intro {
+        font-size: 0.9rem;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(3.4rem, 15vw, 5rem);
+        line-height: 0.9;
+        letter-spacing: -0.06em;
+    }
+
+    .hero-text {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .hero-subtext {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-actions .button {
+        width: 100%;
+    }
+
+    .hero-links {
+        gap: 14px 18px;
+    }
+
+    .hero::before {
+        width: 350px;
+        height: 350px;
+
+        right: -180px;
+        top: 10%;
+    }
 }
 
 /* =========================
@@ -4528,10 +4721,13 @@ a {
 
 .hero-content > * {
     opacity: 0;
-    transform: translateY(24px);
-    animation: heroReveal 0.8s ease forwards;
+    transform: translateY(20px);
+    animation: heroReveal 0.6s ease forwards;
 }
 
+.hero-content h1 {
+    animation: nameReveal 0.45s ease-out 0.05s both;
+}
 .hero-label {
     animation-delay: 0.1s;
 }
@@ -4758,3 +4954,116 @@ a {
 
 }
 
+
+/* =========================
+   HERO NAME — ANIMATED
+========================= */
+
+.hero-title-wrap h1 {
+    color: #111111 !important;
+    animation: nameEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Red accent */
+.hero-title-wrap h1 span {
+    color: #d71920 !important;
+    display: inline-block;
+    animation: accentSlide 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+@keyframes nameEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+        letter-spacing: -0.02em;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: -0.07em;
+    }
+}
+
+@keyframes accentSlide {
+    from {
+        opacity: 0;
+        transform: translateX(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.hero-title-wrap h1 span {
+    background: linear-gradient(
+        90deg,
+        #d71920,
+        #ff3b30,
+        #d71920
+    );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    animation: redShimmer 3s ease-in-out infinite !important;
+}
+
+@keyframes redShimmer {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+}
+
+/* =========================
+   FULL NAME — CRIMSON GRADIENT
+========================= */
+
+.hero-title-wrap h1 {
+    background: linear-gradient(
+        90deg,
+        #a80712,
+        #d71920,
+        #ef3038,
+        #b90f19
+    );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    animation: crimsonFlow 4s ease-in-out infinite !important;
+}
+
+.hero-title-wrap h1 span {
+    color: inherit !important;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes crimsonFlow {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+}
