@@ -6407,37 +6407,276 @@ a {
 }
 
 /* =========================================
-   MOBILE — SKILLS ALIGNMENT FIX
+   EDUCATION — MOBILE FIX
    ========================================= */
 
 @media (max-width: 600px) {
 
-    .skills-grid {
+    .education-item {
+        display: block !important;
+        padding: 35px 0 !important;
+    }
+
+    .education-year {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 13px;
+    }
+
+    .education-type {
+        margin-bottom: 10px;
+        font-size: 10px;
+    }
+
+    .education-content h3 {
+        font-size: 27px !important;
+        line-height: 1.15;
+        margin-bottom: 10px;
+    }
+
+    .education-content > p:not(.education-type) {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .education-stats {
         display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
-        width: 100% !important;
-        margin: 0 !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px !important;
+        margin-top: 30px !important;
     }
 
-    .skill-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        transform: none !important;
+    .education-stats strong {
+        font-size: 24px;
     }
 
-    .skills-section,
-    #skills {
+    .education-stats span {
+        font-size: 11px;
+    }
+}
+
+/* =========================================
+   MOBILE GALLERY — DESKTOP-STYLE MOSAIC
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .photo-gallery-section {
+        padding: 90px 20px 100px !important;
+    }
+
+    .gallery-heading {
+        display: block !important;
+        margin-bottom: 35px !important;
+    }
+
+    .gallery-heading-main {
+        margin-bottom: 25px !important;
+    }
+
+    .gallery-heading-side {
+        padding: 0 !important;
+    }
+
+    /* Keep the mosaic structure */
+
+    .photo-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-template-rows: 220px 170px 170px !important;
+        gap: 10px !important;
+    }
+
+    /* Large main photo */
+
+    .photo-card-01 {
+        grid-column: 1 / 3 !important;
+        grid-row: 1 / 2 !important;
+    }
+
+    /* Top-right pair */
+
+    .photo-card-02 {
+        grid-column: 1 / 2 !important;
+        grid-row: 2 / 3 !important;
+    }
+
+    .photo-card-03 {
+        grid-column: 2 / 3 !important;
+        grid-row: 2 / 3 !important;
+    }
+
+    /* Wide middle photo */
+
+    .photo-card-04 {
+        grid-column: 1 / 3 !important;
+        grid-row: 3 / 4 !important;
+    }
+
+    /* Bottom three photos */
+
+    .photo-card-05 {
+        grid-column: 1 / 2 !important;
+        grid-row: 4 / 5 !important;
+    }
+
+    .photo-card-06 {
+        grid-column: 2 / 3 !important;
+        grid-row: 4 / 5 !important;
+    }
+
+    .photo-card-07 {
+        grid-column: 1 / 3 !important;
+        grid-row: 5 / 6 !important;
+    }
+
+    .photo-card {
         width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .photo-card img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* Keep the desktop hover treatment clean on mobile */
+
+    .photo-card::after {
+        opacity: 0 !important;
+    }
+
+    .photo-overlay {
+        opacity: 0 !important;
+    }
+
+    /* Footer */
+
+    .gallery-footer {
+        display: block !important;
+        margin-top: 45px !important;
+    }
+
+    .gallery-footer-line {
+        display: block;
+        width: 100%;
+        margin: 18px 0;
+    }
+
+    .gallery-footer blockquote {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+}
+
+/* =========================================
+   MOBILE HERO — FINAL POLISH
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: auto !important;
+        padding: 120px 20px 80px !important;
+        overflow: hidden !important;
+    }
+
+    .hero-inner {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 55px !important;
+        width: 100% !important;
+    }
+
+    .hero-content {
+        width: 100% !important;
+    }
+
+    /* Small heading */
+
+    .hero-label {
+        margin-bottom: 25px !important;
+        font-size: 0.65rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Your name */
+
+    .hero-name {
+        display: block !important;
+        width: 100% !important;
+
+        font-size: clamp(3.4rem, 16vw, 4.8rem) !important;
+        line-height: 0.92 !important;
+        letter-spacing: -0.07em !important;
+
+        margin: 0 0 42px !important;
+
+        color: #d71920 !important;
+        -webkit-text-fill-color: #d71920 !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+    }
+
+    .hero-name span {
+        display: block !important;
+
+        color: #d71920 !important;
+        -webkit-text-fill-color: #d71920 !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+    }
+
+    /* Main description */
+
+    .hero-lead {
         max-width: 100% !important;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
+        margin: 0 0 16px !important;
+        font-size: 1.05rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .hero-description {
+        max-width: 100% !important;
+        margin: 0 0 30px !important;
+        font-size: 0.92rem !important;
+        line-height: 1.75 !important;
+    }
+
+    /* Buttons */
+
+    .hero-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .hero-actions .button {
+        width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    .skill-card h3,
-    .skill-card p {
-        text-align: left !important;
+    /* Links */
+
+    .hero-links {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 14px 18px !important;
     }
-}
+
+    /* Profile card */
+
+    .profile-card {
+        width: 100% !important;
+        max-width: 440px !important;
+        margin: 0 auto !important;
+        transform: none !important;
+    }
+}S
