@@ -72,7 +72,6 @@ window.addEventListener("scroll", () => {
 // ------------------------------------------
 // 3. ROTATING ROLE TEXT
 // ------------------------------------------
-
 const roleText = document.getElementById("role-text");
 
 const roles = [
@@ -84,24 +83,22 @@ const roles = [
 
 let roleIndex = 0;
 
-setInterval(() => {
+function changeRole() {
 
-    roleText.style.opacity = "0";
+    roleText.classList.add("role-changing");
 
     setTimeout(() => {
 
-        roleIndex =
-            (roleIndex + 1) % roles.length;
+        roleIndex = (roleIndex + 1) % roles.length;
 
-        roleText.textContent =
-            roles[roleIndex];
+        roleText.textContent = roles[roleIndex];
 
-        roleText.style.opacity = "1";
+        roleText.classList.remove("role-changing");
 
-    }, 300);
+    }, 350);
+}
 
-}, 3000);
-
+setInterval(changeRole, 3000);
 
 // ------------------------------------------
 // 4. THEME TOGGLE
