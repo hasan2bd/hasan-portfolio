@@ -6226,3 +6226,51 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* =========================================
+   HERO NAME — FULL GRADIENT
+   ========================================= */
+
+.hero-name {
+    background: linear-gradient(
+        110deg,
+        #8f0710 0%,
+        #d71920 30%,
+        #ff4b52 50%,
+        #d71920 70%,
+        #8f0710 100%
+    );
+
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+
+    animation: fullNameGradient 6s ease-in-out infinite;
+}
+
+/* Remove the old separate gradient from "Hasan." */
+.hero-name span {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+@keyframes fullNameGradient {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+}
