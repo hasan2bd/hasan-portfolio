@@ -6350,3 +6350,94 @@ a {
     text-shadow: none !important;
     animation: none !important;
 }
+
+/* =========================================
+   MOBILE FIXES
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    /* HERO NAME */
+    .hero-name {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        font-size: clamp(3rem, 15vw, 4.5rem) !important;
+        line-height: 0.95 !important;
+
+        color: #d71920 !important;
+        -webkit-text-fill-color: #d71920 !important;
+
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+
+        text-shadow: none !important;
+    }
+
+    .hero-name span {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        color: #d71920 !important;
+        -webkit-text-fill-color: #d71920 !important;
+
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+    }
+
+    /* PREVENT HERO CONTENT FROM OVERFLOWING */
+    .hero,
+    .hero-inner,
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* GENERAL MOBILE SECTION */
+    .section {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+}
+
+/* =========================================
+   MOBILE — SKILLS ALIGNMENT FIX
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .skills-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .skill-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+
+    .skills-section,
+    #skills {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .skill-card h3,
+    .skill-card p {
+        text-align: left !important;
+    }
+}
