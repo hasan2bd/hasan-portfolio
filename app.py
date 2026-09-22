@@ -1497,8 +1497,6 @@ def admin_logout():
     return redirect(
         url_for("admin_login")
     )
-
-
 # =========================
 # CREATE DATABASE TABLES
 # =========================
@@ -1514,7 +1512,32 @@ with app.app_context():
         Admin
     )
 
+    from werkzeug.security import generate_password_hash
+
     db.create_all()
+
+    # Create admin account if it does not exist
+    if Admin.query.count() == 0:
+
+        admin_username = app.config.get(
+            "ADMIN_USERNAME"
+        )
+
+        admin_password = app.config.get(
+            "ADMIN_PASSWORD"
+        )
+
+        if admin_username and admin_password:
+
+            admin = Admin(
+                username=admin_username,
+                password_hash=generate_password_hash(
+                    admin_password
+                )
+            )
+
+            db.session.add(admin)
+            db.session.commit()
 
 
 
