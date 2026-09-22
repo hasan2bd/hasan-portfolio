@@ -1516,29 +1516,42 @@ with app.app_context():
 
     db.create_all()
 
-    # Create admin account if it does not exist
-    if Admin.query.count() == 0:
+   # =========================
+# INITIALIZE ADMIN ACCOUNT
+# =========================
 
-        admin_username = app.config.get(
-            "ADMIN_USERNAME"
-        )
+admin_username = app.config.get(
+    "ADMIN_USERNAME"
+)
 
-        admin_password = app.config.get(
-            "ADMIN_PASSWORD"
-        )
+admin_password = app.config.get(
+    "ADMIN_PASSWORD"
+)
 
-        if admin_username and admin_password:
+if admin_username and admin_password:
 
-            admin = Admin(
-                username=admin_username,
-                password_hash=generate_password_hash(
-                    admin_password
-                )
+    admin = Admin.query.filter_by(
+        username=admin_username
+    ).first()
+
+    if admin is None:
+
+        admin = Admin(
+            username=admin_username,
+            password_hash=generate_password_hash(
+                admin_password
             )
+        )
 
-            db.session.add(admin)
-            db.session.commit()
+        db.session.add(admin)
 
+    else:
+
+        admin.password_hash = generate_password_hash(
+            admin_password
+        )
+
+    db.session.commit()
 
 
 
