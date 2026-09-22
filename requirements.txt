@@ -1,5 +1,7 @@
 Flask
-gunicorn
 Flask-SQLAlchemy
 Flask-Login
 python-dotenv
+Werkzeug
+reportlab
+gunicorn
