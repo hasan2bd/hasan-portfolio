@@ -1516,7 +1516,7 @@ with app.app_context():
 
     db.create_all()
 
-   # =========================
+# =========================
 # INITIALIZE ADMIN ACCOUNT
 # =========================
 
@@ -1544,16 +1544,7 @@ if admin_username and admin_password:
         )
 
         db.session.add(admin)
-
-    else:
-
-        admin.password_hash = generate_password_hash(
-            admin_password
-        )
-
-    db.session.commit()
-
-
+        db.session.commit()
 
     # =========================
 # CHANGE PROFILE PICTURE
