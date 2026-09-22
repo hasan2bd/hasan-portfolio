@@ -1642,6 +1642,23 @@ def admin_profile_picture():
         "admin/profile_picture.html",
         setting=setting
     )
+
+
+    @app.route("/admin-status")
+def admin_status():
+
+    from models import Admin
+
+    admin_username = app.config.get("ADMIN_USERNAME")
+
+    admin = Admin.query.filter_by(
+        username=admin_username
+    ).first()
+
+    if admin is None:
+        return "ADMIN NOT FOUND"
+
+    return "ADMIN EXISTS"
 # =========================
 # RUN APPLICATION
 # =========================
