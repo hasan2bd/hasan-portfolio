@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Gallery — Hasan Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+                    <span>01</span>
+                    Dashboard
+                </a>
+
+
+                <a href="{{ url_for('admin_projects') }}">
+                    <span>02</span>
+                    Projects
+                </a>
+
+
+                <a href="{{ url_for('admin_skills') }}">
+                    <span>03</span>
+                    Skills
+                </a>
+
+
+                <a href="{{ url_for('admin_education') }}">
+                    <span>04</span>
+                    Education
+                </a>
+
+
+                <a href="{{ url_for('admin_experience') }}">
+                    <span>05</span>
+                    Experience
+                </a>
+
+
+                <a
+                    href="{{ url_for('admin_gallery') }}"
+                    class="active"
+                >
+                    <span>06</span>
+                    Gallery
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        CONTENT MANAGEMENT
+                    </p>
+
+                    <h1>
+                        Gallery
+                    </h1>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('admin_add_gallery') }}"
+                    class="quick-action-primary"
+                >
+                    + Add Image
+                </a>
+
+            </header>
+
+
+
+            <!-- GALLERY CONTENT -->
+
+            <section class="admin-section">
+
+
+                {% if gallery_images %}
+
+
+                    <div class="gallery-admin-grid">
+
+
+                        {% for item in gallery_images %}
+
+
+                            <article class="gallery-admin-card">
+
+
+                                <!-- IMAGE -->
+
+                                <div class="gallery-admin-image">
+
+                                    <img
+                                        src="{{ item.image_url }}"
+                                        alt="{{ item.title or 'Gallery image' }}"
+                                        loading="lazy"
+                                    >
+
+                                </div>
+
+
+
+                                <!-- CONTENT -->
+
+                                <div class="gallery-admin-content">
+
+
+                                    <div class="gallery-admin-top">
+
+                                        <div>
+
+                                            <span class="gallery-admin-number">
+                                                {{ "%02d" | format(loop.index) }}
+                                            </span>
+
+
+                                            <h2>
+                                                {{ item.title or "Untitled Image" }}
+                                            </h2>
+
+                                        </div>
+
+
+                                        <span class="gallery-order">
+
+                                            #{{ item.display_order or loop.index }}
+
+                                        </span>
+
+                                    </div>
+
+
+
+                                    {% if item.caption %}
+
+                                        <p class="gallery-admin-caption">
+
+                                            {{ item.caption }}
+
+                                        </p>
+
+                                    {% else %}
+
+                                        <p class="gallery-admin-caption gallery-caption-empty">
+
+                                            No caption added.
+
+                                        </p>
+
+                                    {% endif %}
+
+
+
+                                    <!-- ACTIONS -->
+
+                                    <div class="gallery-admin-actions">
+
+
+                                        <a
+                                            href="{{ url_for(
+                                                'admin_edit_gallery',
+                                                gallery_id=item.id
+                                            ) }}"
+                                        >
+                                            Edit
+                                        </a>
+
+
+                                        <a
+                                            href="{{ item.image_url }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Open ↗
+                                        </a>
+
+
+                                        <form
+                                            method="POST"
+                                            action="{{ url_for(
+                                                'admin_delete_gallery',
+                                                gallery_id=item.id
+                                            ) }}"
+                                            onsubmit="return confirm('Delete this gallery image?');"
+                                        >
+
+                                            <button
+                                                type="submit"
+                                                class="admin-delete-button"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </form>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </article>
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                {% else %}
+
+
+                    <!-- EMPTY STATE -->
+
+                    <div class="empty-state">
+
+
+                        <span>
+                            06
+                        </span>
+
+
+                        <h2>
+                            No gallery images yet.
+                        </h2>
+
+
+                        <p>
+                            Add your first image to start building your portfolio gallery.
+                        </p>
+
+
+                        <a
+                            href="{{ url_for('admin_add_gallery') }}"
+                            class="quick-action-primary"
+                        >
+                            + Add Your First Image
+                        </a>
+
+
+                    </div>
+
+
+                {% endif %}
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+</body>
+
+</html>

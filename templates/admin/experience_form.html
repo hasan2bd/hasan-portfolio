@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ "Edit Experience" if experience else "Add Experience" }}
+        — Hasan Portfolio
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+                    <span>01</span>
+                    Dashboard
+                </a>
+
+                <a href="{{ url_for('admin_projects') }}">
+                    <span>02</span>
+                    Projects
+                </a>
+
+                <a href="{{ url_for('admin_skills') }}">
+                    <span>03</span>
+                    Skills
+                </a>
+
+                <a href="{{ url_for('admin_education') }}">
+                    <span>04</span>
+                    Education
+                </a>
+
+                <a
+                    href="{{ url_for('admin_experience') }}"
+                    class="active"
+                >
+                    <span>05</span>
+                    Experience
+                </a>
+
+                <a href="{{ url_for('admin_gallery') }}">
+                    <span>06</span>
+                    Gallery
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        EXPERIENCE MANAGEMENT
+                    </p>
+
+                    <h1>
+                        {{ "Edit Experience" if experience else "Add Experience" }}
+                    </h1>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ERROR -->
+
+            {% if error %}
+
+                <div class="form-error">
+                    {{ error }}
+                </div>
+
+            {% endif %}
+
+
+
+            <!-- FORM -->
+
+            <form
+                method="POST"
+                class="project-form"
+            >
+
+
+                <!-- EXPERIENCE INFORMATION -->
+
+                <div class="form-block">
+
+
+                    <div class="form-block-heading">
+
+                        <p class="admin-label">
+                            EXPERIENCE INFORMATION
+                        </p>
+
+                        <p>
+                            Define the role, organization, and period of the experience.
+                        </p>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="title">
+                                Role / Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                placeholder="e.g. Joint Treasurer"
+                                value="{{ experience.title if experience else '' }}"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="organization">
+                                Organization
+                            </label>
+
+                            <input
+                                type="text"
+                                id="organization"
+                                name="organization"
+                                placeholder="e.g. English Club, Green University of Bangladesh"
+                                value="{{ experience.organization if experience else '' }}"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="period">
+                            Period
+                        </label>
+
+                        <input
+                            type="text"
+                            id="period"
+                            name="period"
+                            placeholder="e.g. 2026 — 2027"
+                            value="{{ experience.period if experience else '' }}"
+                        >
+
+                        <small class="form-help">
+                            Use a clear format such as 2026 — 2027 or 2025 — Present.
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-block">
+
+
+                    <div class="form-block-heading">
+
+                        <p class="admin-label">
+                            DESCRIPTION
+                        </p>
+
+                        <p>
+                            Add a concise description of your responsibilities and contributions.
+                        </p>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="7"
+                            placeholder="Describe your responsibilities, contributions, or achievements."
+                        >{{ experience.description if experience else '' }}</textarea>
+
+                        <small class="form-help">
+                            Keep this factual, concise, and suitable for your professional portfolio.
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- FORM ACTIONS -->
+
+                <div class="form-actions">
+
+
+                    <a
+                        href="{{ url_for('admin_experience') }}"
+                        class="form-cancel"
+                    >
+                        Cancel
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="quick-action-primary"
+                    >
+
+                        {{ "Update Experience" if experience else "Save Experience" }}
+                        →
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

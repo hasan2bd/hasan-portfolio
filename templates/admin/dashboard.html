@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard — Hasan Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a
+                    href="{{ url_for('admin_dashboard') }}"
+                    class="active"
+                >
+                    <span>01</span>
+                    Dashboard
+                </a>
+
+
+                <a href="{{ url_for('admin_projects') }}">
+                    <span>02</span>
+                    Projects
+                </a>
+
+
+                <a href="{{ url_for('admin_skills') }}">
+                    <span>03</span>
+                    Skills
+                </a>
+
+
+                <a href="{{ url_for('admin_education') }}">
+                    <span>04</span>
+                    Education
+                </a>
+
+
+                <a href="{{ url_for('admin_experience') }}">
+                    <span>05</span>
+                    Experience
+                </a>
+
+
+                <a href="{{ url_for('admin_gallery') }}">
+                    <span>06</span>
+                    Gallery
+                </a>
+
+
+                <a href="{{ url_for('admin_profile_picture') }}">
+                    <span>07</span>
+                    Profile Picture
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+
+                <a
+                    href="{{ url_for('admin_logout') }}"
+                >
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        ADMIN DASHBOARD
+                    </p>
+
+                    <h1>
+                        Welcome back, Hasan.
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-header-right">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        System Online
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- OVERVIEW -->
+
+            <section class="admin-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="admin-label">
+                            OVERVIEW
+                        </p>
+
+                        <h2>
+                            Portfolio at a glance
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+
+                    <!-- PROJECTS -->
+
+                    <div class="dashboard-card">
+
+                        <span class="card-number">
+                            {{ project_count }}
+                        </span>
+
+                        <strong>
+                            Projects
+                        </strong>
+
+                        <p>
+                            Manage your portfolio projects.
+                        </p>
+
+                        <span class="card-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <!-- SKILLS -->
+
+                    <div class="dashboard-card">
+
+                        <span class="card-number">
+                            {{ skill_count }}
+                        </span>
+
+                        <strong>
+                            Skills
+                        </strong>
+
+                        <p>
+                            Manage your technical and professional skills.
+                        </p>
+
+                        <span class="card-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <!-- EDUCATION -->
+
+                    <div class="dashboard-card">
+
+                        <span class="card-number">
+                            {{ education_count }}
+                        </span>
+
+                        <strong>
+                            Education
+                        </strong>
+
+                        <p>
+                            Manage your academic background.
+                        </p>
+
+                        <span class="card-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE -->
+
+                    <div class="dashboard-card">
+
+                        <span class="card-number">
+                            {{ experience_count }}
+                        </span>
+
+                        <strong>
+                            Experience
+                        </strong>
+
+                        <p>
+                            Manage leadership and experience.
+                        </p>
+
+                        <span class="card-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <!-- GALLERY -->
+
+                    <div class="dashboard-card">
+
+                        <span class="card-number">
+                            {{ gallery_count }}
+                        </span>
+
+                        <strong>
+                            Gallery
+                        </strong>
+
+                        <p>
+                            Manage your portfolio images.
+                        </p>
+
+                        <span class="card-arrow">
+                            →
+                        </span>
+
+                    </div>
+
+
+                    <!-- PROFILE PICTURE -->
+
+                    <a
+                        href="{{ url_for('admin_profile_picture') }}"
+                        class="dashboard-card"
+                    >
+
+                        <span class="card-number">
+                            07
+                        </span>
+
+                        <strong>
+                            Profile Picture
+                        </strong>
+
+                        <p>
+                            Change the profile picture shown on your portfolio.
+                        </p>
+
+                        <span class="card-arrow">
+                            →
+                        </span>
+
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="admin-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="admin-label">
+                            QUICK ACTIONS
+                        </p>
+
+                        <h2>
+                            What would you like to manage?
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+
+                    <a href="{{ url_for('admin_add_project') }}">
+                        + Add Project
+                    </a>
+
+
+                    <a href="{{ url_for('admin_add_skill') }}">
+                        + Add Skill
+                    </a>
+
+
+                    <a href="{{ url_for('admin_add_experience') }}">
+                        + Add Experience
+                    </a>
+
+
+                    <a href="{{ url_for('admin_add_gallery') }}">
+                        + Add Gallery Image
+                    </a>
+
+
+                    <a href="{{ url_for('admin_profile_picture') }}">
+                        + Change Profile Picture
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

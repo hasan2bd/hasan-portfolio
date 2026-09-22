@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Education — Hasan Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+
+                    <span>01</span>
+
+                    Dashboard
+
+                </a>
+
+
+                <a href="{{ url_for('admin_projects') }}">
+
+                    <span>02</span>
+
+                    Projects
+
+                </a>
+
+
+                <a href="{{ url_for('admin_skills') }}">
+
+                    <span>03</span>
+
+                    Skills
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('admin_education') }}"
+                    class="active"
+                >
+
+                    <span>04</span>
+
+                    Education
+
+                </a>
+
+
+                <a href="{{ url_for('admin_experience') }}">
+
+                    <span>05</span>
+
+                    Experience
+
+                </a>
+
+
+                <a href="{{ url_for('admin_gallery') }}">
+
+                    <span>06</span>
+
+                    Gallery
+
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        CONTENT MANAGEMENT
+                    </p>
+
+                    <h1>
+                        Education
+                    </h1>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('admin_add_education') }}"
+                    class="quick-action-primary"
+                >
+                    + Add Education
+                </a>
+
+            </header>
+
+
+
+            <!-- EDUCATION CONTENT -->
+
+            <section class="admin-section">
+
+
+                {% if education %}
+
+
+                    <div class="education-admin-list">
+
+
+                        {% for item in education %}
+
+
+                            <article class="education-admin-card">
+
+
+                                <div class="education-admin-number">
+
+                                    {{ "%02d" | format(loop.index) }}
+
+                                </div>
+
+
+                                <div class="education-admin-content">
+
+
+                                    <div class="education-admin-heading">
+
+                                        <div>
+
+                                            <h2>
+                                                {{ item.institution }}
+                                            </h2>
+
+                                            <p>
+                                                {{ item.degree or "Education" }}
+                                                {% if item.field %}
+                                                    · {{ item.field }}
+                                                {% endif %}
+                                            </p>
+
+                                        </div>
+
+
+                                        <span class="education-period">
+
+                                            {{ item.start_year or "—" }}
+
+                                            —
+
+                                            {{ item.end_year or "Present" }}
+
+                                        </span>
+
+                                    </div>
+
+
+                                    {% if item.description %}
+
+                                        <p class="education-admin-description">
+
+                                            {{ item.description }}
+
+                                        </p>
+
+                                    {% endif %}
+
+
+                                    <div class="education-admin-actions">
+
+                                        <a
+                                            href="{{ url_for(
+                                                'admin_edit_education',
+                                                education_id=item.id
+                                            ) }}"
+                                        >
+                                            Edit
+                                        </a>
+
+
+                                        <form
+                                            method="POST"
+                                            action="{{ url_for(
+                                                'admin_delete_education',
+                                                education_id=item.id
+                                            ) }}"
+                                            onsubmit="return confirm(
+                                                'Delete this education record?'
+                                            );"
+                                        >
+
+                                            <button
+                                                type="submit"
+                                                class="admin-delete-button"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </article>
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                {% else %}
+
+
+                    <div class="empty-state">
+
+
+                        <span>
+                            01
+                        </span>
+
+
+                        <h2>
+                            No education records yet.
+                        </h2>
+
+
+                        <p>
+                            Add your academic background to display it throughout your portfolio.
+                        </p>
+
+
+                        <a
+                            href="{{ url_for('admin_add_education') }}"
+                            class="quick-action-primary"
+                        >
+                            + Add Your First Education
+                        </a>
+
+
+                    </div>
+
+
+                {% endif %}
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+</body>
+
+</html>

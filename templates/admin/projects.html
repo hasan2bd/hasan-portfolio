@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Projects — Hasan Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+                    <span>01</span>
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="{{ url_for('admin_projects') }}"
+                    class="active"
+                >
+                    <span>02</span>
+                    Projects
+                </a>
+
+
+                <a href="{{ url_for('admin_skills') }}">
+                    <span>03</span>
+                    Skills
+                </a>
+
+
+                <a href="{{ url_for('admin_education') }}">
+                    <span>04</span>
+                    Education
+                </a>
+
+
+                <a href="{{ url_for('admin_experience') }}">
+                    <span>05</span>
+                    Experience
+                </a>
+
+
+                <a href="{{ url_for('admin_gallery') }}">
+                    <span>06</span>
+                    Gallery
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        CONTENT MANAGEMENT
+                    </p>
+
+                    <h1>
+                        Projects
+                    </h1>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('admin_add_project') }}"
+                    class="quick-action-primary"
+                >
+                    + Add Project
+                </a>
+
+            </header>
+
+
+
+            <!-- PROJECT LIST -->
+
+            <section class="admin-section">
+
+                <div class="project-admin-list">
+
+
+                    {% if projects %}
+
+
+                        {% for project in projects %}
+
+
+                            <article class="project-admin-card">
+
+
+                                <!-- PROJECT INFORMATION -->
+
+                                <div class="project-admin-main">
+
+                                    <span class="card-number">
+                                        {{ "%02d" | format(loop.index) }}
+                                    </span>
+
+
+                                    <div class="project-admin-title">
+
+                                        <h2>
+                                            {{ project.title }}
+                                        </h2>
+
+
+                                        <p>
+                                            {{ project.category or "Project" }}
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- PROJECT META -->
+
+                                <div class="project-admin-meta">
+
+
+                                    <span class="project-status">
+                                        {{ project.status or "IN PROGRESS" }}
+                                    </span>
+
+
+                                    <div class="project-admin-actions">
+
+
+                                        <a
+                                            href="{{ url_for(
+                                                'admin_edit_project',
+                                                project_id=project.id
+                                            ) }}"
+                                        >
+                                            Edit
+                                        </a>
+
+
+                                        {% if project.project_url %}
+
+                                        <a
+                                            href="{{ project.project_url }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            View ↗
+                                        </a>
+
+                                        {% endif %}
+
+
+                                        <form
+                                            method="POST"
+                                            action="{{ url_for(
+                                                'admin_delete_project',
+                                                project_id=project.id
+                                            ) }}"
+                                            onsubmit="return confirm(
+                                                'Delete this project?'
+                                            );"
+                                        >
+
+                                            <button
+                                                type="submit"
+                                                class="admin-delete-button"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </form>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </article>
+
+
+                        {% endfor %}
+
+
+                    {% else %}
+
+
+                        <!-- EMPTY STATE -->
+
+                        <div class="empty-state">
+
+                            <span>
+                                01
+                            </span>
+
+
+                            <h2>
+                                No projects yet.
+                            </h2>
+
+
+                            <p>
+                                Your projects will appear here once you add them.
+                            </p>
+
+
+                            <a
+                                href="{{ url_for('admin_add_project') }}"
+                                class="quick-action-primary"
+                            >
+                                + Add Your First Project
+                            </a>
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

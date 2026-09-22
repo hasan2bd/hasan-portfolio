@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ "Edit Skill" if skill else "Add Skill" }}
+        — Hasan Portfolio
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+                    <span>01</span>
+                    Dashboard
+                </a>
+
+
+                <a href="{{ url_for('admin_projects') }}">
+                    <span>02</span>
+                    Projects
+                </a>
+
+
+                <a
+                    href="{{ url_for('admin_skills') }}"
+                    class="active"
+                >
+                    <span>03</span>
+                    Skills
+                </a>
+
+
+                <a href="{{ url_for('admin_education') }}">
+                    <span>04</span>
+                    Education
+                </a>
+
+
+                <a href="{{ url_for('admin_experience') }}">
+                    <span>05</span>
+                    Experience
+                </a>
+
+
+                <a href="{{ url_for('admin_gallery') }}">
+                    <span>06</span>
+                    Gallery
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        CONTENT MANAGEMENT
+                    </p>
+
+                    <h1>
+                        {{ "Edit Skill" if skill else "Add Skill" }}
+                    </h1>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- FORM -->
+
+            <section class="admin-section">
+
+
+                {% if error %}
+
+                    <div class="form-error">
+                        {{ error }}
+                    </div>
+
+                {% endif %}
+
+
+                <form
+                    method="POST"
+                    class="project-form"
+                >
+
+
+                    <!-- SKILL INFORMATION -->
+
+                    <div class="form-block">
+
+                        <div class="form-block-heading">
+
+                            <p class="admin-label">
+                                SKILL INFORMATION
+                            </p>
+
+                            <p>
+                                Define the skill and organize it within your portfolio.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Skill Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="e.g. Excel"
+                                    value="{{ skill.name if skill else '' }}"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="category">
+                                    Category
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="category"
+                                    name="category"
+                                    placeholder="e.g. Technical"
+                                    value="{{ skill.category if skill else '' }}"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROFICIENCY -->
+
+                    <div class="form-block">
+
+                        <div class="form-block-heading">
+
+                            <p class="admin-label">
+                                PROFICIENCY
+                            </p>
+
+                            <p>
+                                Select the current level you want displayed on your portfolio.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="level">
+                                Skill Level
+                            </label>
+
+
+                            <select
+                                id="level"
+                                name="level"
+                            >
+
+                                <option
+                                    value=""
+                                    {% if not skill or not skill.level %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Select level
+                                </option>
+
+
+                                <option
+                                    value="Beginner"
+                                    {% if skill and skill.level == "Beginner" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Beginner
+                                </option>
+
+
+                                <option
+                                    value="Intermediate"
+                                    {% if skill and skill.level == "Intermediate" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Intermediate
+                                </option>
+
+
+                                <option
+                                    value="Advanced"
+                                    {% if skill and skill.level == "Advanced" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    Advanced
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="form-actions">
+
+
+                        <a
+                            href="{{ url_for('admin_skills') }}"
+                            class="form-cancel"
+                        >
+                            Cancel
+                        </a>
+
+
+                        <button
+                            type="submit"
+                            class="quick-action-primary"
+                        >
+
+                            {{ "Update Skill →" if skill else "Save Skill →" }}
+
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+</body>
+
+</html>

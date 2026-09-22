@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ "Edit Education" if education else "Add Education" }}
+        — Hasan Portfolio
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+                    <span>01</span>
+                    Dashboard
+                </a>
+
+
+                <a href="{{ url_for('admin_projects') }}">
+                    <span>02</span>
+                    Projects
+                </a>
+
+
+                <a href="{{ url_for('admin_skills') }}">
+                    <span>03</span>
+                    Skills
+                </a>
+
+
+                <a
+                    href="{{ url_for('admin_education') }}"
+                    class="active"
+                >
+                    <span>04</span>
+                    Education
+                </a>
+
+
+                <a href="{{ url_for('admin_experience') }}">
+                    <span>05</span>
+                    Experience
+                </a>
+
+
+                <a href="{{ url_for('admin_gallery') }}">
+                    <span>06</span>
+                    Gallery
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        EDUCATION MANAGEMENT
+                    </p>
+
+                    <h1>
+                        {{ "Edit Education" if education else "Add Education" }}
+                    </h1>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- FORM -->
+
+            <section class="admin-section">
+
+
+                {% if error %}
+
+                    <div class="form-error">
+                        {{ error }}
+                    </div>
+
+                {% endif %}
+
+
+                <form
+                    method="POST"
+                    class="project-form"
+                >
+
+
+                    <!-- ACADEMIC INFORMATION -->
+
+                    <div class="form-block">
+
+                        <div class="form-block-heading">
+
+                            <p class="admin-label">
+                                ACADEMIC INFORMATION
+                            </p>
+
+                            <p>
+                                Add the institution and qualification details.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+
+                            <div class="form-group">
+
+                                <label for="institution">
+                                    Institution
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="institution"
+                                    name="institution"
+                                    value="{{ education.institution if education else '' }}"
+                                    placeholder="e.g. Green University of Bangladesh"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="degree">
+                                    Degree
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="degree"
+                                    name="degree"
+                                    value="{{ education.degree if education else '' }}"
+                                    placeholder="e.g. B.A. (Hons.)"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="field">
+                                Field of Study
+                            </label>
+
+                            <input
+                                type="text"
+                                id="field"
+                                name="field"
+                                value="{{ education.field if education else '' }}"
+                                placeholder="e.g. English Language & Literature"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STUDY PERIOD -->
+
+                    <div class="form-block">
+
+                        <div class="form-block-heading">
+
+                            <p class="admin-label">
+                                STUDY PERIOD
+                            </p>
+
+                            <p>
+                                Enter the academic start and end years.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+
+                            <div class="form-group">
+
+                                <label for="start_year">
+                                    Start Year
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="start_year"
+                                    name="start_year"
+                                    value="{{ education.start_year if education else '' }}"
+                                    placeholder="e.g. 2024"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="end_year">
+                                    End Year
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="end_year"
+                                    name="end_year"
+                                    value="{{ education.end_year if education else '' }}"
+                                    placeholder="e.g. 2028"
+                                >
+
+                                <small class="form-help">
+                                    Leave blank if the qualification is ongoing.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-block">
+
+                        <div class="form-block-heading">
+
+                            <p class="admin-label">
+                                DESCRIPTION
+                            </p>
+
+                            <p>
+                                Add a concise summary of the academic experience.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="description">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows="7"
+                                placeholder="e.g. Undergraduate study in English Language and Literature with a focus on literature, language, communication, research, and critical analysis."
+                            >{{ education.description if education else '' }}</textarea>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="form-actions">
+
+
+                        <a
+                            href="{{ url_for('admin_education') }}"
+                            class="form-cancel"
+                        >
+                            Cancel
+                        </a>
+
+
+                        <button
+                            type="submit"
+                            class="quick-action-primary"
+                        >
+
+                            {{ "Update Education →" if education else "Save Education →" }}
+
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+</body>
+
+</html>

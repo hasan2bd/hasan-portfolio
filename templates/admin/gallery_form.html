@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% if gallery_image %}
+            Edit Gallery Image
+        {% else %}
+            Add Gallery Image
+        {% endif %}
+        — Admin
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="admin-layout">
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-logo">
+            MH<span>.</span>
+        </div>
+
+
+        <nav class="admin-nav">
+
+            <a href="{{ url_for('admin_dashboard') }}">
+                <span>01</span>
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('admin_projects') }}">
+                <span>02</span>
+                Projects
+            </a>
+
+            <a href="{{ url_for('admin_skills') }}">
+                <span>03</span>
+                Skills
+            </a>
+
+            <a href="{{ url_for('admin_education') }}">
+                <span>04</span>
+                Education
+            </a>
+
+            <a href="{{ url_for('admin_experience') }}">
+                <span>05</span>
+                Experience
+            </a>
+
+            <a
+                href="{{ url_for('admin_gallery') }}"
+                class="active"
+            >
+                <span>06</span>
+                Gallery
+            </a>
+
+            <a href="{{ url_for('home') }}">
+                <span>↗</span>
+                View Portfolio
+            </a>
+
+            <a href="{{ url_for('admin_logout') }}">
+                <span>→</span>
+                Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- HEADER -->
+
+        <header class="admin-header">
+
+            <div>
+
+                <span class="eyebrow">
+                    GALLERY
+                </span>
+
+                <h1>
+
+                    {% if gallery_image %}
+                        Edit Image
+                    {% else %}
+                        Add Image
+                    {% endif %}
+
+                </h1>
+
+                <p>
+                    Manage an image displayed in your portfolio gallery.
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==========================================
+             FORM
+        =========================================== -->
+
+        <div class="admin-card project-form">
+
+
+            {% if error %}
+
+                <div
+                    style="
+                        margin-bottom: 25px;
+                        padding: 14px 16px;
+                        border: 1px solid rgba(215, 25, 32, .25);
+                        background: rgba(215, 25, 32, .05);
+                        color: #d71920;
+                        font-size: .85rem;
+                    "
+                >
+                    {{ error }}
+                </div>
+
+            {% endif %}
+
+
+
+            <form method="POST">
+
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label for="title">
+                        Image Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="e.g. Professional Portrait"
+                        value="{{ gallery_image.title if gallery_image else '' }}"
+                    >
+
+                </div>
+
+
+
+                <!-- IMAGE URL -->
+
+                <div class="form-group">
+
+                    <label for="image_url">
+                        Cloudinary Image URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="image_url"
+                        name="image_url"
+                        placeholder="https://res.cloudinary.com/..."
+                        value="{{ gallery_image.image_url if gallery_image else '' }}"
+                        required
+                    >
+
+                    <p
+                        style="
+                            margin-top: 8px;
+                            color: #777;
+                            font-size: .75rem;
+                            line-height: 1.5;
+                        "
+                    >
+                        Paste the Cloudinary URL of the image you want
+                        to display in your gallery.
+                    </p>
+
+                </div>
+
+
+
+                <!-- CAPTION -->
+
+                <div class="form-group">
+
+                    <label for="caption">
+                        Caption
+                    </label>
+
+                    <textarea
+                        id="caption"
+                        name="caption"
+                        rows="5"
+                        placeholder="Optional image caption..."
+                    >{{ gallery_image.caption if gallery_image else '' }}</textarea>
+
+                </div>
+
+                <div class="form-group">
+
+    <label for="display_order">
+        Display Order
+    </label>
+
+    <input
+        type="number"
+        id="display_order"
+        name="display_order"
+        min="1"
+        value="{{ gallery_image.display_order if gallery_image else 1 }}"
+    >
+
+</div>
+
+
+
+                <!-- PREVIEW -->
+
+                {% if gallery_image %}
+
+                    <div class="form-group">
+
+                        <label>
+                            Current Image
+                        </label>
+
+                        <div
+                            style="
+                                width: 220px;
+                                height: 150px;
+                                overflow: hidden;
+                                border: 1px solid rgba(0,0,0,.10);
+                                background: #f5f5f2;
+                            "
+                        >
+
+                            <img
+                                src="{{ gallery_image.image_url }}"
+                                alt="{{ gallery_image.title or 'Gallery image' }}"
+                                style="
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    display: block;
+                                "
+                            >
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+
+
+                <!-- ACTIONS -->
+
+                <div class="form-actions">
+
+                    <a
+                        href="{{ url_for('admin_gallery') }}"
+                        class="form-cancel"
+                    >
+                        Cancel
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="quick-action-primary"
+                    >
+
+                        {% if gallery_image %}
+                            Update Image
+                        {% else %}
+                            Save Image
+                        {% endif %}
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

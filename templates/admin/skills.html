@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Skills — Hasan Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+
+                    <span>01</span>
+
+                    Dashboard
+
+                </a>
+
+
+                <a href="{{ url_for('admin_projects') }}">
+
+                    <span>02</span>
+
+                    Projects
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('admin_skills') }}"
+                    class="active"
+                >
+
+                    <span>03</span>
+
+                    Skills
+
+                </a>
+
+
+                <a href="{{ url_for('admin_education') }}">
+
+                    <span>04</span>
+
+                    Education
+
+                </a>
+
+
+                <a href="{{ url_for('admin_experience') }}">
+
+                    <span>05</span>
+
+                    Experience
+
+                </a>
+
+
+                <a href="{{ url_for('admin_gallery') }}">
+
+                    <span>06</span>
+
+                    Gallery
+
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        CONTENT MANAGEMENT
+                    </p>
+
+                    <h1>
+                        Skills
+                    </h1>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('admin_add_skill') }}"
+                    class="quick-action-primary"
+                >
+                    + Add Skill
+                </a>
+
+            </header>
+
+
+
+            <!-- SKILL LIST -->
+
+            <section class="admin-section">
+
+                <div class="project-admin-list">
+
+
+                    {% if skills %}
+
+
+                        {% for skill in skills %}
+
+
+                            <article class="project-admin-card">
+
+
+                                <div class="project-admin-main">
+
+
+                                    <span class="card-number">
+
+                                        {{ "%02d" | format(loop.index) }}
+
+                                    </span>
+
+
+                                    <div class="project-admin-title">
+
+                                        <h2>
+                                            {{ skill.name }}
+                                        </h2>
+
+
+                                        <p>
+                                            {{ skill.category or "Skill" }}
+                                        </p>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="project-admin-meta">
+
+
+                                    <span class="project-status">
+
+                                        {{ skill.level or "—" }}
+
+                                    </span>
+
+
+                                    <div class="project-admin-actions">
+
+
+                                        <a
+                                            href="{{ url_for(
+                                                'admin_edit_skill',
+                                                skill_id=skill.id
+                                            ) }}"
+                                        >
+                                            Edit
+                                        </a>
+
+
+                                        <form
+                                            method="POST"
+                                            action="{{ url_for(
+                                                'admin_delete_skill',
+                                                skill_id=skill.id
+                                            ) }}"
+                                            onsubmit="return confirm(
+                                                'Delete this skill?'
+                                            );"
+                                        >
+
+                                            <button
+                                                type="submit"
+                                                class="admin-delete-button"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </form>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </article>
+
+
+                        {% endfor %}
+
+
+                    {% else %}
+
+
+                        <div class="empty-state">
+
+
+                            <span>
+                                01
+                            </span>
+
+
+                            <h2>
+                                No skills yet.
+                            </h2>
+
+
+                            <p>
+                                Your skills will appear here once you add them.
+                            </p>
+
+
+                            <a
+                                href="{{ url_for('admin_add_skill') }}"
+                                class="quick-action-primary"
+                            >
+                                + Add Your First Skill
+                            </a>
+
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+</body>
+
+</html>

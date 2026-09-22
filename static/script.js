@@ -72,7 +72,9 @@ window.addEventListener("scroll", () => {
 // ------------------------------------------
 // 3. ROTATING ROLE TEXT
 // ------------------------------------------
-const roleText = document.getElementById("role-text");
+
+const roleText =
+    document.getElementById("role-text");
 
 const roles = [
     "Business Analytics",
@@ -85,20 +87,34 @@ let roleIndex = 0;
 
 function changeRole() {
 
+    if (!roleText) {
+        return;
+    }
+
     roleText.classList.add("role-changing");
 
     setTimeout(() => {
 
-        roleIndex = (roleIndex + 1) % roles.length;
+        roleIndex =
+            (roleIndex + 1) % roles.length;
 
-        roleText.textContent = roles[roleIndex];
+        roleText.textContent =
+            roles[roleIndex];
 
-        roleText.classList.remove("role-changing");
+        roleText.classList.remove(
+            "role-changing"
+        );
 
     }, 350);
+
 }
 
-setInterval(changeRole, 3000);
+if (roleText) {
+
+    setInterval(changeRole, 3000);
+
+}
+
 
 // ------------------------------------------
 // 4. THEME TOGGLE
@@ -107,22 +123,33 @@ setInterval(changeRole, 3000);
 const themeToggle =
     document.getElementById("theme-toggle");
 
-themeToggle.addEventListener("click", () => {
+if (themeToggle) {
 
-    document.body.classList.toggle("light-mode");
+    themeToggle.addEventListener(
+        "click",
+        () => {
 
-    const isLight =
-        document.body.classList.contains("light-mode");
+            document.body.classList.toggle(
+                "light-mode"
+            );
 
-    themeToggle.textContent =
-        isLight ? "☀" : "◐";
+            const isLight =
+                document.body.classList.contains(
+                    "light-mode"
+                );
 
-    localStorage.setItem(
-        "theme",
-        isLight ? "light" : "dark"
+            themeToggle.textContent =
+                isLight ? "☀" : "◐";
+
+            localStorage.setItem(
+                "theme",
+                isLight ? "light" : "dark"
+            );
+
+        }
     );
 
-});
+}
 
 
 // Load saved theme
@@ -130,9 +157,14 @@ themeToggle.addEventListener("click", () => {
 const savedTheme =
     localStorage.getItem("theme");
 
-if (savedTheme === "light") {
+if (
+    savedTheme === "light" &&
+    themeToggle
+) {
 
-    document.body.classList.add("light-mode");
+    document.body.classList.add(
+        "light-mode"
+    );
 
     themeToggle.textContent = "☀";
 
@@ -149,33 +181,48 @@ const menuToggle =
 const mobileMenu =
     document.getElementById("mobile-menu");
 
+if (menuToggle && mobileMenu) {
 
-menuToggle.addEventListener("click", () => {
+    menuToggle.addEventListener(
+        "click",
+        () => {
 
-    mobileMenu.classList.toggle("open");
+            mobileMenu.classList.toggle(
+                "open"
+            );
 
-    menuToggle.textContent =
-        mobileMenu.classList.contains("open")
-            ? "×"
-            : "☰";
+            menuToggle.textContent =
+                mobileMenu.classList.contains(
+                    "open"
+                )
+                    ? "×"
+                    : "☰";
 
-});
+        }
+    );
 
 
-const mobileLinks =
-    mobileMenu.querySelectorAll("a");
+    const mobileLinks =
+        mobileMenu.querySelectorAll("a");
 
-mobileLinks.forEach((link) => {
+    mobileLinks.forEach((link) => {
 
-    link.addEventListener("click", () => {
+        link.addEventListener(
+            "click",
+            () => {
 
-        mobileMenu.classList.remove("open");
+                mobileMenu.classList.remove(
+                    "open"
+                );
 
-        menuToggle.textContent = "☰";
+                menuToggle.textContent = "☰";
+
+            }
+        );
 
     });
 
-});
+}
 
 
 // ------------------------------------------
@@ -186,68 +233,274 @@ console.log(
     "Hasan's professional portfolio is running."
 );
 
-/* =========================================================
-   PROJECT CASE STUDY MODAL
-   ========================================================= */
 
-const projectModal = document.getElementById("project-modal");
-const projectModalClose = document.getElementById("project-modal-close");
-const projectModalBackdrop = document.querySelector(
-    ".project-modal-backdrop"
-);
+// ==========================================
+// PROJECT CASE STUDY MODAL
+// ==========================================
 
-const projectButtons = document.querySelectorAll(
-    ".project-view"
-);
+const projectModal =
+    document.getElementById("project-modal");
+
+const projectModalClose =
+    document.getElementById(
+        "project-modal-close"
+    );
+
+const projectModalBackdrop =
+    document.querySelector(
+        ".project-modal-backdrop"
+    );
+
+const projectButtons =
+    document.querySelectorAll(
+        ".project-view"
+    );
 
 
-/* Open modal */
+// Open modal
 
-projectButtons.forEach(button => {
+if (projectModal) {
 
-    button.addEventListener("click", () => {
+    projectButtons.forEach((button) => {
 
-        projectModal.classList.add("active");
+        button.addEventListener(
+            "click",
+            () => {
 
-        document.body.style.overflow = "hidden";
+                projectModal.classList.add(
+                    "active"
+                );
+
+                document.body.style.overflow =
+                    "hidden";
+
+            }
+        );
 
     });
 
-});
+}
 
 
-/* Close modal */
+// Close modal
 
 function closeProjectModal() {
 
-    projectModal.classList.remove("active");
+    if (!projectModal) {
+        return;
+    }
+
+    projectModal.classList.remove(
+        "active"
+    );
 
     document.body.style.overflow = "";
 
 }
 
 
-projectModalClose.addEventListener(
-    "click",
-    closeProjectModal
-);
+// Close button
+
+if (projectModalClose) {
+
+    projectModalClose.addEventListener(
+        "click",
+        closeProjectModal
+    );
+
+}
 
 
-projectModalBackdrop.addEventListener(
-    "click",
-    closeProjectModal
-);
+// Close backdrop
+
+if (projectModalBackdrop) {
+
+    projectModalBackdrop.addEventListener(
+        "click",
+        closeProjectModal
+    );
+
+}
 
 
-/* Close with Escape */
+// Close with Escape
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener(
+    "keydown",
+    (event) => {
 
-    if (
-        event.key === "Escape" &&
-        projectModal.classList.contains("active")
-    ) {
-        closeProjectModal();
+        if (
+            event.key === "Escape" &&
+            projectModal &&
+            projectModal.classList.contains(
+                "active"
+            )
+        ) {
+
+            closeProjectModal();
+
+        }
+
     }
+);
 
-});
+
+// ==========================================
+// 7. FLOATING QUICK MENU
+// ==========================================
+
+const quickMenu =
+    document.getElementById("quick-menu");
+
+const quickMenuToggle =
+    document.getElementById(
+        "quick-menu-toggle"
+    );
+
+
+// Only initialize Quick Menu if it exists
+
+if (
+    quickMenu &&
+    quickMenuToggle
+) {
+
+    const quickMenuLinks =
+        quickMenu.querySelectorAll(
+            ".quick-menu-panel a"
+        );
+
+
+    // --------------------------------------
+    // Open / close quick menu
+    // --------------------------------------
+
+    quickMenuToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                quickMenu.classList.toggle(
+                    "open"
+                );
+
+            quickMenuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+            quickMenuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close quick menu"
+                    : "Open quick menu"
+            );
+
+        }
+    );
+
+
+    // --------------------------------------
+    // Close after selecting a menu item
+    // --------------------------------------
+
+    quickMenuLinks.forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                quickMenu.classList.remove(
+                    "open"
+                );
+
+                quickMenuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                quickMenuToggle.setAttribute(
+                    "aria-label",
+                    "Open quick menu"
+                );
+
+            }
+        );
+
+    });
+
+
+    // --------------------------------------
+    // Close when clicking outside
+    // --------------------------------------
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                quickMenu.classList.contains(
+                    "open"
+                ) &&
+                !quickMenu.contains(
+                    event.target
+                )
+            ) {
+
+                quickMenu.classList.remove(
+                    "open"
+                );
+
+                quickMenuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                quickMenuToggle.setAttribute(
+                    "aria-label",
+                    "Open quick menu"
+                );
+
+            }
+
+        }
+    );
+
+
+    // --------------------------------------
+    // Close with Escape
+    // --------------------------------------
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape" &&
+                quickMenu.classList.contains(
+                    "open"
+                )
+            ) {
+
+                quickMenu.classList.remove(
+                    "open"
+                );
+
+                quickMenuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                quickMenuToggle.setAttribute(
+                    "aria-label",
+                    "Open quick menu"
+                );
+
+                quickMenuToggle.focus();
+
+            }
+
+        }
+    );
+
+}

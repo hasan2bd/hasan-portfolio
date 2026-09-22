@@ -64,6 +64,52 @@
 
 </div>
 
+<!-- QUICK MENU -->
+
+<div class="quick-menu" id="quick-menu">
+
+    <div class="quick-menu-panel" id="quick-menu-panel">
+
+        <div class="quick-menu-label">
+            QUICK MENU
+        </div>
+
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contact">Contact</a>
+
+        <div class="quick-menu-divider"></div>
+
+        <a
+            href="{{ url_for('admin_login') }}"
+            class="quick-menu-admin"
+        >
+            <span>Admin Login</span>
+            <span>↗</span>
+        </a>
+
+    </div>
+
+    <button
+        class="quick-menu-toggle"
+        id="quick-menu-toggle"
+        type="button"
+        aria-label="Open quick menu"
+        aria-expanded="false"
+        aria-controls="quick-menu-panel"
+    >
+        <span class="quick-menu-icon">+</span>
+        <span class="quick-menu-text">MENU</span>
+    </button>
+
+</div>
+
+<!-- END QUICK MENU -->
+
 <!-- =========================
      HERO
 ========================= -->
@@ -137,13 +183,13 @@
                         Email ↗
                     </a>
 
-                    <a
-                        href="{{ url_for('static', filename='documents/Hasan-CV.pdf') }}"
-                        class="cv-link"
-                        target="_blank">
-                        Download CV
-                        <span>↓</span>
-                    </a>
+             <a
+    href="{{ url_for('download_cv') }}"
+    class="cv-link"
+    target="_blank">
+    Download CV
+    <span>↓</span>
+</a>
 
                 </div>
 
@@ -160,8 +206,8 @@
 
                 <div class="profile-photo">
                     <img
-                        src="{{ url_for('static', filename='images/profile.jpg') }}"
-                        alt="Md. Mahmudul Hasan">
+    src="{{ url_for('static', filename=profile_setting.profile_image) }}"
+    alt="Md. Mahmudul Hasan">
                 </div>
 
                 <div class="profile-info">
@@ -201,193 +247,71 @@
     </section>
 
 
-    <!-- =========================
-         PERSONAL GALLERY
-    ========================= -->
+<!-- =========================
+     PHOTO GRID
+========================= -->
 
-    <section id="gallery" class="section photo-gallery-section">
+<div class="photo-grid">
 
-        <div class="gallery-container">
+    {% if gallery_images %}
 
-            <div class="gallery-heading">
+        {% for item in gallery_images %}
 
-                <div class="gallery-heading-main">
+            <article
+                class="photo-card photo-card-{{ '%02d' | format(loop.index) }}"
+            >
 
-                    <p class="section-label">
-                        07 — PERSONAL
-                    </p>
+                <img
+                    src="{{ item.image_url }}"
+                    alt="{{ item.title or 'Personal gallery image' }}"
+                    loading="lazy"
+                >
 
-                    <h2>
-                        A little more<br>
-                        <span>about me.</span>
-                    </h2>
+
+                <div class="photo-overlay">
+
+                    <span>
+                        {{ '%02d' | format(loop.index) }}
+                    </span>
+
+
+                    <div>
+
+                        {% if item.title %}
+
+                            <p>
+                                {{ item.title }}
+                            </p>
+
+                        {% elif item.caption %}
+
+                            <p>
+                                {{ item.caption }}
+                            </p>
+
+                        {% endif %}
+
+                    </div>
 
                 </div>
 
-                <div class="gallery-heading-side">
+            </article>
 
-                    <p>
-                        Beyond academics and professional goals,
-                        these moments capture some of the person
-                        behind the work.
-                    </p>
+        {% endfor %}
 
-                </div>
+    {% else %}
 
-            </div>
+        <div class="gallery-empty">
 
+            <p>
+                Gallery images coming soon.
+            </p>
 
-            <!-- PHOTO GRID -->
+        </div>
 
-            <div class="photo-grid">
+    {% endif %}
 
-                <!-- 01 -->
-                <article class="photo-card photo-card-01">
-
-                    <img
-                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918744/main-sample.jpg"
-                        alt="Md. Mahmudul Hasan — Futsal Trophy"
-                        loading="lazy">
-
-                    <div class="photo-overlay">
-
-                        <span>01</span>
-
-                        <div>
-                            <p>Futsal Trophy</p>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 02 -->
-                <article class="photo-card photo-card-02">
-
-                    <img
-                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918755/hasan-02.jpg"
-                        alt="Md. Mahmudul Hasan — Champions"
-                        loading="lazy">
-
-                    <div class="photo-overlay">
-
-                        <span>02</span>
-
-                        <div>
-                            <p>Champions</p>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 03 -->
-                <article class="photo-card photo-card-03">
-
-                    <img
-                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918767/hasan-03.jpg"
-                        alt="Md. Mahmudul Hasan — A moment to remember"
-                        loading="lazy">
-
-                    <div class="photo-overlay">
-
-                        <span>03</span>
-
-                        <div>
-                            <p>A moment to remember</p>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 04 -->
-                <article class="photo-card photo-card-04">
-
-                    <img
-                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918777/hasan-04.jpg"
-                        alt="Md. Mahmudul Hasan — Champion vibes and memories"
-                        loading="lazy">
-
-                    <div class="photo-overlay">
-
-                        <span>04</span>
-
-                        <div>
-                            <p>Champion vibes & memories</p>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 05 -->
-                <article class="photo-card photo-card-05">
-
-                    <img
-                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918795/hasan-05.jpg"
-                        alt="Md. Mahmudul Hasan — Alumni gathering"
-                        loading="lazy">
-
-                    <div class="photo-overlay">
-
-                        <span>05</span>
-
-                        <div>
-                            <p>Alumni gathering</p>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 06 -->
-                <article class="photo-card photo-card-06">
-
-                    <img
-                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918809/hasan-06.jpg"
-                        alt="Md. Mahmudul Hasan — Another chapter"
-                        loading="lazy">
-
-                    <div class="photo-overlay">
-
-                        <span>06</span>
-
-                        <div>
-                            <p>Another chapter</p>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 07 -->
-                <article class="photo-card photo-card-07">
-
-                    <img
-                        src="https://res.cloudinary.com/bizqf3vy/image/upload/v1789918816/hasan-07.jpg"
-                        alt="Md. Mahmudul Hasan — Three idiots"
-                        loading="lazy">
-
-                    <div class="photo-overlay">
-
-                        <span>07</span>
-
-                        <div>
-                            <p>Three idiots</p>
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
+</div>
 
 
             <!-- FROST QUOTATION -->
@@ -502,203 +426,127 @@
     <p class="section-label">02 — EDUCATION</p>
 
     <div class="section-heading">
-        <h2>Academic<br><span>journey.</span></h2>
+
+        <h2>
+            Academic<br>
+            <span>journey.</span>
+        </h2>
 
         <p>
-            From foundational Islamic education to my current
-            undergraduate studies in English Language & Literature,
-            my academic journey has developed my communication,
-            analytical, and critical-thinking abilities.
+            My academic journey has developed my communication,
+            analytical, research, and critical-thinking abilities
+            through diverse educational experiences.
         </p>
+
     </div>
 
 
     <div class="education-timeline">
 
-        <!-- UNIVERSITY -->
+        {% if education %}
 
-        <article class="education-item current">
+            {% set item = education[0] %}
 
-            <div class="education-marker">
-                <span></span>
-            </div>
+            <article class="education-item
+                {% if item.end_year == '2028' %}current{% endif %}">
 
-            <div class="education-year">
-                2024 — PRESENT
-            </div>
-
-            <div class="education-card">
-
-                <div class="education-status">
-                    CURRENT
+                <div class="education-marker">
+                    <span></span>
                 </div>
 
-                <h3>
-                    Green University of Bangladesh
-                </h3>
 
-                <h4>
-                    B.A. (Hons.) in English Language & Literature
-                </h4>
+                <div class="education-year">
 
-                <p>
-                    Currently pursuing undergraduate studies with a
-                    focus on English language, literature, critical
-                    thinking, communication, and academic research.
-                </p>
+                    {{ item.start_year }}
 
-                <div class="education-details">
+                    —
 
-                    <span>
-                        <strong>Semester</strong>
-                        7th
-                    </span>
-
-                    <span>
-                        <strong>CGPA</strong>
-                        No
-                    </span>
-
-                    <span>
-                        <strong>Credits</strong>
-                        67.5 / 131
-                    </span>
-
-                    <span>
-                        <strong>Expected</strong>
-                        2028
-                    </span>
+                    {% if item.end_year == '2028' %}
+                        PRESENT
+                    {% else %}
+                        {{ item.end_year }}
+                    {% endif %}
 
                 </div>
 
-            </div>
 
-        </article>
+                <div class="education-card">
+
+                    <div class="education-status">
+
+                        {% if item.end_year == '2028' %}
+                            CURRENT
+                        {% else %}
+                            COMPLETED
+                        {% endif %}
+
+                    </div>
 
 
-        <!-- FAZIL -->
+                    <h3>
+                        {{ item.institution }}
+                    </h3>
 
-        <article class="education-item">
 
-            <div class="education-marker">
-                <span></span>
-            </div>
+                    {% if item.degree %}
 
-            <div class="education-year">
-                2021 — 2023
-            </div>
+                        <h4>
+                            {{ item.degree }}
 
-            <div class="education-card">
+                            {% if item.field %}
+                                in {{ item.field }}
+                            {% endif %}
+                        </h4>
 
-                <div class="education-status">
-                    COMPLETED
+                    {% elif item.field %}
+
+                        <h4>
+                            {{ item.field }}
+                        </h4>
+
+                    {% endif %}
+
+
+                    {% if item.description %}
+
+                        <p>
+                            {{ item.description }}
+                        </p>
+
+                    {% endif %}
+
                 </div>
 
-                <h3>
-                    Tamirul Millat Kamil Madrasa
-                </h3>
+            </article>
 
-                <h4>
-                    Fazil Pass
-                </h4>
 
-                <p>
-                    Completed Fazil Pass studies at Tamirul Millat
-                    Kamil Madrasa, Tongi.
-                </p>
+        {% else %}
 
-                <div class="education-location">
-                    📍 Tongi, Bangladesh
+            <article class="education-item">
+
+                <div class="education-marker">
+                    <span></span>
                 </div>
 
-            </div>
+                <div class="education-card">
 
-        </article>
+                    <div class="education-status">
+                        NO RECORD
+                    </div>
 
+                    <h3>
+                        Education information coming soon.
+                    </h3>
 
-        <!-- ALIM -->
-
-        <article class="education-item">
-
-            <div class="education-marker">
-                <span></span>
-            </div>
-
-            <div class="education-year">
-                2020
-            </div>
-
-            <div class="education-card">
-
-                <div class="education-status">
-                    COMPLETED
                 </div>
 
-                <h3>
-                    Tamirul Millat Kamil Madrasa
-                </h3>
+            </article>
 
-                <h4>
-                    Alim — Equivalent to HSC
-                </h4>
-
-                <p>
-                    Completed Alim education, equivalent to the
-                    Higher Secondary Certificate (HSC).
-                </p>
-
-                <div class="education-location">
-                    📍 Tongi, Bangladesh
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- SSC / DAKHIL -->
-
-        <article class="education-item">
-
-            <div class="education-marker">
-                <span></span>
-            </div>
-
-            <div class="education-year">
-                SSC / DAKHIL
-            </div>
-
-            <div class="education-card">
-
-                <div class="education-status">
-                    COMPLETED
-                </div>
-
-                <h3>
-                    Sandian Dakhil Madrasa
-                </h3>
-
-                <h4>
-                    Dakhil — Equivalent to SSC
-                </h4>
-
-                <p>
-                    Completed secondary-level Dakhil education at
-                    Sandian Dakhil Madrasa.
-                </p>
-
-                <div class="education-location">
-                    📍 Rasulpur, Gafargaon, Mymensingh
-                </div>
-
-            </div>
-
-        </article>
+        {% endif %}
 
     </div>
 
 </section>
-
             <p class="section-description">
                 I am an undergraduate student of English Language &
                 Literature at Green University of Bangladesh. My academic
@@ -714,11 +562,12 @@
 
         </section>
 
+<!-- ================= SKILLS ================= -->
 
-    <!-- ================= SKILLS ================= -->
 <section id="skills" class="section skills-section">
 
     <div class="section-heading">
+
         <div>
             <p class="section-label">03 — EXPERTISE</p>
 
@@ -733,235 +582,146 @@
             technical foundations, and continuously developing
             business-oriented skills.
         </p>
+
     </div>
 
 
-    <!-- Skill Categories -->
+    <!-- ================= DYNAMIC SKILLS ================= -->
+
     <div class="skills-dashboard">
 
+        {% if skills %}
 
-        <!-- ================= COMMUNICATION ================= -->
-        <article class="skill-category">
+            {% set categories = skills | groupby("category") %}
 
-            <div class="skill-category-top">
+            {% for category, category_skills in categories %}
 
-                <div class="skill-icon">
-                    01
+                <article class="skill-category">
+
+                    <div class="skill-category-top">
+
+                        <div class="skill-icon">
+                            {{ "%02d" | format(loop.index) }}
+                        </div>
+
+                        <div>
+
+                            <p class="skill-category-label">
+                                {{ category or "SKILLS" }}
+                            </p>
+
+                            <h3>
+                                {{ category or "Skills" }}
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-list">
+
+                        {% for skill in category_skills %}
+
+                            <div class="skill-item">
+
+                                <div class="skill-info">
+
+                                    <span>
+                                        {{ skill.name }}
+                                    </span>
+
+                                    <span>
+                                        {{ skill.level or "—" }}
+                                    </span>
+
+                                </div>
+
+
+                                <div class="skill-bar">
+
+                                    {% if skill.level %}
+                                        
+                                        {% set level = skill.level | lower %}
+
+                                        {% if "expert" in level %}
+                                            <span style="width: 95%;"></span>
+
+                                        {% elif "advanced" in level %}
+                                            <span style="width: 85%;"></span>
+
+                                        {% elif "strong" in level %}
+                                            <span style="width: 80%;"></span>
+
+                                        {% elif "intermediate" in level %}
+                                            <span style="width: 65%;"></span>
+
+                                        {% elif "basic" in level %}
+                                            <span style="width: 45%;"></span>
+
+                                        {% else %}
+                                            <span style="width: 50%;"></span>
+                                        {% endif %}
+
+                                    {% else %}
+
+                                        <span style="width: 0%;"></span>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <article class="skill-category">
+
+                <div class="skill-category-top">
+
+                    <div class="skill-icon">
+                        01
+                    </div>
+
+                    <div>
+
+                        <p class="skill-category-label">
+                            SKILLS
+                        </p>
+
+                        <h3>
+                            Skills coming soon.
+                        </h3>
+
+                    </div>
+
                 </div>
 
-                <div>
-                    <p class="skill-category-label">
-                        COMMUNICATION
+
+                <div class="skill-list">
+
+                    <p>
+                        Skills will appear here once they are
+                        added through the dashboard.
                     </p>
 
-                    <h3>People & Communication</h3>
                 </div>
 
-            </div>
+            </article>
 
+        {% endif %}
 
-            <div class="skill-list">
+    </div>
 
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Public Speaking</span>
-                        <span>Strong</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 88%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Presentation</span>
-                        <span>Strong</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 90%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Professional English</span>
-                        <span>Strong</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 85%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Team Collaboration</span>
-                        <span>Strong</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 82%;"></span>
-                    </div>
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- ================= TECHNICAL ================= -->
-        <article class="skill-category">
-
-            <div class="skill-category-top">
-
-                <div class="skill-icon">
-                    02
-                </div>
-
-                <div>
-                    <p class="skill-category-label">
-                        TECHNICAL
-                    </p>
-
-                    <h3>Tools & Technology</h3>
-                </div>
-
-            </div>
-
-
-            <div class="skill-list">
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Microsoft Excel</span>
-                        <span>Intermediate</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 65%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Microsoft Word</span>
-                        <span>Intermediate</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 72%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>PowerPoint</span>
-                        <span>Intermediate</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 78%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Data Entry & Management</span>
-                        <span>Intermediate</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 68%;"></span>
-                    </div>
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- ================= ANALYTICAL ================= -->
-        <article class="skill-category">
-
-            <div class="skill-category-top">
-
-                <div class="skill-icon">
-                    03
-                </div>
-
-                <div>
-                    <p class="skill-category-label">
-                        ANALYTICAL
-                    </p>
-
-                    <h3>Thinking & Analysis</h3>
-                </div>
-
-            </div>
-
-
-            <div class="skill-list">
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Critical Thinking</span>
-                        <span>Strong</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 84%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Research</span>
-                        <span>Strong</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 82%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Problem Solving</span>
-                        <span>Developing</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 70%;"></span>
-                    </div>
-                </div>
-
-
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span>Information Analysis</span>
-                        <span>Developing</span>
-                    </div>
-
-                    <div class="skill-bar">
-                        <span style="width: 68%;"></span>
-                    </div>
-                </div>
-
-            </div>
-
-        </article>
+</section>
 
 
 
@@ -1065,18 +825,19 @@
 
 
     <!-- ================= PROJECT GRID ================= -->
-    <div class="projects-grid">
- 
- <!-- PROJECT 01 -->
-<article class="project-card project-featured">
+
+     <!-- PROJECT 01 -->
+    {% for project in projects %}
+
+<article class="project-card {% if project.featured %}project-featured{% endif %}">
 
     <div class="project-number">
-        01
+        {{ "%02d" | format(loop.index) }}
     </div>
 
     <div class="project-status">
         <span></span>
-        COMPLETED
+        {{ project.status }}
     </div>
 
     <div class="project-icon">
@@ -1086,26 +847,25 @@
     <div class="project-content">
 
         <p class="project-type">
-            DATA ANALYSIS · EXCEL
+            {{ project.category or "PROJECT" }}
         </p>
 
         <h3>
-            Sales Performance
-            <br>
-            Analysis
+            {{ project.title }}
         </h3>
 
         <p class="project-description">
-            My first Excel data analysis project, designed to examine
-            sales performance across products, regions, sales
-            representatives, revenue, cost, and profit.
+            {{ project.description }}
         </p>
 
         <div class="project-tools">
-            <span>Excel</span>
-            <span>Data Cleaning</span>
-            <span>PivotTables</span>
-            <span>Charts</span>
+
+            {% if project.tools %}
+                {% for tool in project.tools.split(',') %}
+                    <span>{{ tool.strip() }}</span>
+                {% endfor %}
+            {% endif %}
+
         </div>
 
     </div>
@@ -1113,198 +873,27 @@
     <div class="project-footer">
 
         <span>
-            EXCEL PROJECT · 2026
+            {{ project.status }} · 2026
         </span>
 
-        <a
-            class="project-view"
-            href="https://greenedubd-my.sharepoint.com/:x:/g/personal/242020015_student_green_ac_bd/IQBODCFt2M-9QYyj6QYarl2RAZ2UVHnxpIGbQGWeznsbnLo?e=kI4hXy"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            View Excel Project
-            <span>↗</span>
-        </a>
+        {% if project.project_url %}
+            <a
+                class="project-view"
+                href="{{ project.project_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                View Project
+                <span>↗</span>
+            </a>
+        {% endif %}
 
     </div>
 
 </article>
 
-      <!-- PROJECT 02 -->
-        <article class="project-card">
-
-            <div class="project-number">
-                02
-            </div>
-
-            <div class="project-status planned">
-                <span></span>
-                PLANNED
-            </div>
-
-            <div class="project-icon">
-                ◇
-            </div>
-
-            <div class="project-content">
-
-                <p class="project-type">
-                    DATA ANALYSIS · SQL
-                </p>
-
-                <h3>
-                    Customer Data
-                    <br>
-                    Analysis
-                </h3>
-
-                <p class="project-description">
-                    A future SQL project focused on customer
-                    behavior, segmentation, purchasing patterns,
-                    and business insights.
-                </p>
-
-                <div class="project-tools">
-                    <span>SQL</span>
-                    <span>Data Analysis</span>
-                    <span>Business Insights</span>
-                </div>
-
-            </div>
-
-            <div class="project-footer">
-
-                <span>
-                    NEXT STAGE
-                </span>
-
-                <span class="project-arrow">
-                    →
-                </span>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- PROJECT 03 -->
-        <article class="project-card">
-
-            <div class="project-number">
-                03
-            </div>
-
-            <div class="project-status planned">
-                <span></span>
-                PLANNED
-            </div>
-
-            <div class="project-icon">
-                ◫
-            </div>
-
-            <div class="project-content">
-
-                <p class="project-type">
-                    BUSINESS INTELLIGENCE
-                </p>
-
-                <h3>
-                    Business Performance
-                    <br>
-                    Dashboard
-                </h3>
-
-                <p class="project-description">
-                    An interactive dashboard designed to transform
-                    raw business data into clear visual insights
-                    for decision-making.
-                </p>
-
-                <div class="project-tools">
-                    <span>Power BI</span>
-                    <span>Visualization</span>
-                    <span>KPIs</span>
-                </div>
-
-            </div>
-
-            <div class="project-footer">
-
-                <span>
-                    FUTURE PROJECT
-                </span>
-
-                <span class="project-arrow">
-                    →
-                </span>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- PROJECT 04 -->
-        <article class="project-card">
-
-            <div class="project-number">
-                04
-            </div>
-
-            <div class="project-status planned">
-                <span></span>
-                PLANNED
-            </div>
-
-            <div class="project-icon">
-                </>
-            </div>
-
-            <div class="project-content">
-
-                <p class="project-type">
-                    PYTHON · DATA
-                </p>
-
-                <h3>
-                    Python Data
-                    <br>
-                    Analysis
-                </h3>
-
-                <p class="project-description">
-                    A future Python project exploring data
-                    manipulation, analysis, visualization,
-                    and automated reporting.
-                </p>
-
-                <div class="project-tools">
-                    <span>Python</span>
-                    <span>Pandas</span>
-                    <span>Analysis</span>
-                </div>
-
-            </div>
-
-            <div class="project-footer">
-
-                <span>
-                    FUTURE PROJECT
-                </span>
-
-                <span class="project-arrow">
-                    →
-                </span>
-
-            </div>
-
-        </article>
-
-    </div>
-
-
+{% endfor %}
+     
     <!-- Project philosophy -->
     <div class="projects-bottom">
 
@@ -1332,58 +921,135 @@
 
 </section>
 
-<!-- Experience & Leadership -->
-<section id="experience" class="section">
 
-    <p class="section-label">05 — EXPERIENCE</p>
+<!-- =========================
+     EXPERIENCE
+========================= -->
 
-    <h2>
-        Experience &<br>
-        <span>leadership.</span>
-    </h2>
+<section id="experience" class="section experience-section">
 
-    <div class="experience-list">
+    <div class="section-heading">
 
-        <!-- English Club -->
-        <article class="experience-item">
+        <div>
+            <p class="section-label">05 — EXPERIENCE</p>
 
-            <div class="experience-year">
-                2025 — PRESENT
-            </div>
+            <h2>
+                Experience<br>
+                <span>that shapes my direction.</span>
+            </h2>
+        </div>
 
-            <div class="experience-main">
+        <p>
+            A record of academic, leadership, organizational,
+            and professional experiences that continue to shape
+            my communication, teamwork, and practical skills.
+        </p>
 
-                <div class="experience-heading">
-                    <div>
-                        <p class="experience-type">LEADERSHIP</p>
-                        <h3>English Club</h3>
+    </div>
+
+
+    <div class="experience-timeline">
+
+        {% if experiences %}
+
+            {% for experience in experiences %}
+
+                <article class="experience-item">
+
+                    <div class="experience-content">
+
+                        <!-- PERIOD -->
+
+                        <div class="experience-period">
+                            {{ experience.period }}
+                        </div>
+
+
+                        <!-- EXPERIENCE DETAILS -->
+
+                        <div class="experience-card">
+
+                            <div class="experience-status">
+                                EXPERIENCE
+                            </div>
+
+                            <h3>
+                                {{ experience.title }}
+                            </h3>
+
+                            {% if experience.organization %}
+
+                                <h4>
+                                    {{ experience.organization }}
+                                </h4>
+
+                            {% endif %}
+
+                            {% if experience.description %}
+
+                                <p>
+                                    {{ experience.description }}
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- ARROW -->
+
+                        <div class="experience-arrow">
+                            ↗
+                        </div>
+
                     </div>
 
-                    <span class="experience-arrow">↗</span>
+                </article>
+
+            {% endfor %}
+
+
+        {% else %}
+
+            <article class="experience-item">
+
+                <div class="experience-content">
+
+                    <div class="experience-period">
+                        —
+                    </div>
+
+                    <div class="experience-card">
+
+                        <div class="experience-status">
+                            NO RECORD
+                        </div>
+
+                        <h3>
+                            Experience information coming soon.
+                        </h3>
+
+                        <p>
+                            New experiences will appear here
+                            as they are added through the dashboard.
+                        </p>
+
+                    </div>
+
+                    <div class="experience-arrow">
+                        ↗
+                    </div>
+
                 </div>
 
-                <p>
-                    Active involvement in university English Club activities,
-                    contributing to organizational initiatives, communication,
-                    and student engagement.
-                </p>
+            </article>
 
-                <div class="experience-tags">
-                    <span>Leadership</span>
-                    <span>Communication</span>
-                    <span>Teamwork</span>
-                </div>
-
-            </div>
-
-        </article>
-
-
-        
+        {% endif %}
 
     </div>
 
 </section>
+
 
 <!-- Career Roadmap -->
 <section id="roadmap" class="section roadmap-section">
@@ -1582,33 +1248,13 @@
 
 </section>
 
-        <!-- Contact -->
-        <section id="contact" class="section contact">
 
-          <p class="section-label">07 — CONTACT</p>
-
-            <h2>
-                Let's<br>
-                <span>connect.</span>
-            </h2>
-
-            <p class="section-description">
-                Open to internships, entry-level opportunities,
-                collaborations, and professional connections.
-            </p>
-
-            <a href="mailto:your-email@example.com"
-               class="button button-primary">
-                Get In Touch
-            </a>
-
-        </section>
         <!-- CONTACT -->
 <section id="contact" class="section contact-section">
     <div class="contact-wrapper">
 
         <div class="contact-heading">
-            <p class="section-label">08 — CONTACT</p>
+            <p class="section-label">07 — CONTACT</p>
             <h2>Let’s build<br><span>something useful.</span></h2>
             <p>
                 I’m open to professional opportunities, collaborations,

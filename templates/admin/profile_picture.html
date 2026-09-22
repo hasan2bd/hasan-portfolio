@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Profile Picture — Hasan Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+                    Dashboard
+                </a>
+
+                <a href="{{ url_for('admin_projects') }}">
+                    Projects
+                </a>
+
+                <a href="{{ url_for('admin_skills') }}">
+                    Skills
+                </a>
+
+                <a href="{{ url_for('admin_education') }}">
+                    Education
+                </a>
+
+                <a href="{{ url_for('admin_experience') }}">
+                    Experience
+                </a>
+
+                <a href="{{ url_for('admin_gallery') }}">
+                    Gallery
+                </a>
+
+                <a
+                    href="{{ url_for('admin_profile_picture') }}"
+                    class="active"
+                >
+                    Profile Picture
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a href="{{ url_for('home') }}" target="_blank">
+                    View Portfolio ↗
+                </a>
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <div class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        PROFILE SETTINGS
+                    </p>
+
+                    <h1>
+                        Change Profile Picture
+                    </h1>
+
+                    <p>
+                        Update the profile picture displayed
+                        on your public portfolio.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FLASH MESSAGES -->
+
+            {% with messages = get_flashed_messages(
+                with_categories=true
+            ) %}
+
+                {% if messages %}
+
+                    <div class="flash-messages">
+
+                        {% for category, message in messages %}
+
+                            <div class="flash-message {{ category }}">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+            {% endwith %}
+
+
+            <!-- PROFILE PICTURE CARD -->
+
+            <section class="admin-card profile-picture-card">
+
+
+                <div class="profile-picture-preview">
+
+                    <p class="admin-label">
+                        CURRENT PROFILE PICTURE
+                    </p>
+
+                    <div class="profile-picture-image">
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename=setting.profile_image
+                            ) }}"
+                            alt="Md. Mahmudul Hasan"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    method="POST"
+                    enctype="multipart/form-data"
+                    class="profile-picture-form"
+                >
+
+                    <div class="form-group">
+
+                        <label for="profile_image">
+                            Select New Profile Picture
+                        </label>
+
+                        <input
+                            type="file"
+                            id="profile_image"
+                            name="profile_image"
+                            accept=".jpg,.jpeg,.png,.webp"
+                            required
+                        >
+
+                        <small>
+                            JPG, JPEG, PNG or WEBP
+                            · Maximum 5 MB
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="admin-button"
+                    >
+                        Change Profile Picture
+                    </button>
+
+                </form>
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

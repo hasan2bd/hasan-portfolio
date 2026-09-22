@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Experience — Hasan Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='admin/admin.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+            <div class="admin-logo">
+                MH.
+            </div>
+
+            <p class="admin-label">
+                PORTFOLIO CMS
+            </p>
+
+
+            <nav class="admin-nav">
+
+                <a href="{{ url_for('admin_dashboard') }}">
+
+                    <span>01</span>
+
+                    Dashboard
+
+                </a>
+
+
+                <a href="{{ url_for('admin_projects') }}">
+
+                    <span>02</span>
+
+                    Projects
+
+                </a>
+
+
+                <a href="{{ url_for('admin_skills') }}">
+
+                    <span>03</span>
+
+                    Skills
+
+                </a>
+
+
+                <a href="{{ url_for('admin_education') }}">
+
+                    <span>04</span>
+
+                    Education
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('admin_experience') }}"
+                    class="active"
+                >
+
+                    <span>05</span>
+
+                    Experience
+
+                </a>
+
+
+                <a href="{{ url_for('admin_gallery') }}">
+
+                    <span>06</span>
+
+                    Gallery
+
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    target="_blank"
+                >
+                    View Portfolio ↗
+                </a>
+
+
+                <a href="{{ url_for('admin_logout') }}">
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-header">
+
+                <div>
+
+                    <p class="admin-label">
+                        CONTENT MANAGEMENT
+                    </p>
+
+                    <h1>
+                        Experience
+                    </h1>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('admin_add_experience') }}"
+                    class="quick-action-primary"
+                >
+                    + Add Experience
+                </a>
+
+            </header>
+
+
+
+            <!-- EXPERIENCE LIST -->
+
+            <section class="admin-section">
+
+
+                {% if experiences %}
+
+
+                    <div class="experience-admin-list">
+
+
+                        {% for item in experiences %}
+
+
+                            <article class="experience-admin-card">
+
+
+                                <div class="experience-admin-number">
+
+                                    {{ "%02d" | format(loop.index) }}
+
+                                </div>
+
+
+                                <div class="experience-admin-content">
+
+
+                                    <div class="experience-admin-heading">
+
+                                        <div>
+
+                                            <h2>
+                                                {{ item.title }}
+                                            </h2>
+
+                                            <p>
+                                                {{ item.organization or "Organization" }}
+                                            </p>
+
+                                        </div>
+
+
+                                        <span class="experience-period">
+
+                                            {{ item.period or "—" }}
+
+                                        </span>
+
+                                    </div>
+
+
+                                    {% if item.description %}
+
+                                        <p class="experience-admin-description">
+
+                                            {{ item.description }}
+
+                                        </p>
+
+                                    {% endif %}
+
+
+                                    <div class="experience-admin-actions">
+
+
+                                        <a
+                                            href="{{ url_for(
+                                                'admin_edit_experience',
+                                                experience_id=item.id
+                                            ) }}"
+                                        >
+                                            Edit
+                                        </a>
+
+
+                                        <form
+                                            method="POST"
+                                            action="{{ url_for(
+                                                'admin_delete_experience',
+                                                experience_id=item.id
+                                            ) }}"
+                                            onsubmit="return confirm(
+                                                'Delete this experience?'
+                                            );"
+                                        >
+
+                                            <button
+                                                type="submit"
+                                                class="admin-delete-button"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </form>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </article>
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                {% else %}
+
+
+                    <div class="empty-state">
+
+
+                        <span>
+                            01
+                        </span>
+
+
+                        <h2>
+                            No experience yet.
+                        </h2>
+
+
+                        <p>
+                            Add your professional, leadership, volunteer, or organizational experience.
+                        </p>
+
+
+                        <a
+                            href="{{ url_for('admin_add_experience') }}"
+                            class="quick-action-primary"
+                        >
+                            + Add Your First Experience
+                        </a>
+
+
+                    </div>
+
+
+                {% endif %}
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+</body>
+
+</html>
