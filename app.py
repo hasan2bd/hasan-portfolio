@@ -1643,8 +1643,7 @@ def admin_profile_picture():
         setting=setting
     )
 
-
-    @app.route("/admin-status")
+@app.route("/admin-status")
 def admin_status():
 
     from models import Admin
